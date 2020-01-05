@@ -1,0 +1,23 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# production
+/build
+/dist
+
+# IDE specifications
+/.idea
+
+# htaccess file
+.htaccess
+
+npm-debug.log*
+
+# large files
+/src/docs
+/src/img
+/src/img_original
+/src/video
+

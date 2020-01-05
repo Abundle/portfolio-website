@@ -1,0 +1,65 @@
+[
+    {
+        "id"        : 0,
+        "title"     : "LOREM IPSUM",
+        "content"   : "Lorem ipsum.",
+        "image"     : "placeholder.jpg",
+        "date"      : "January 1, 2018"
+    },
+    {
+        "id": 2,
+        "title" : "PRODUCT SKETCH",
+        "content" : "Product sketch.",
+        "image" : "sketch1.jpg",
+        "date" : "September 25, 2015"
+    },
+    {
+        "id": 3,
+        "title" : "ANGRY BIRD",
+        "content" : "First sketch to render with Photoshop.",
+        "image" : "angry_bird.jpg",
+        "date" : "April 14, 2016"
+    },
+    {
+        "id": 5,
+        "title" : "MARIO",
+        "content" : "Mario sketch, rendered with Photoshop.",
+        "image" : "mario.jpg",
+        "date" : "July 25, 2016"
+    },
+    {
+        "id": 6,
+        "title" : "MODERN HOUSE",
+        "content" : "Render of a house modeled in 3ds Max.",
+        "image" : "house_render.jpg",
+        "date" : "August 13, 2016"
+    },
+    {
+        "id": 8,
+        "title" : "MMP LOGO PROPOSAL",
+        "content" : "Proposal for the Eindhoven University of Technology research group Materials Membrane Processes logo.",
+        "image" : "logo_mmp.jpg",
+        "date" : "March 6, 2016"
+    },
+    {
+        "id": 12,
+        "title" : "POSTER LINQ",
+        "content" : "Poster visual background for my student team VIRTUe.",
+        "image" : "poster_linq.jpg",
+        "date" : "October 27, 2017"
+    },
+    {
+        "id"        : 2,
+        "title"     : "Logo Babyclothing",
+        "content"   : "Logo for a webshop selling second-hand baby clothing.",
+        "image"     : "logo_tweedemams.jpg",
+        "date"      : "February, 2016"
+    },
+    {
+        "id"        : 3,
+        "title"     : "Mario Illustration",
+        "content"   : "Mario sketch, coloured with Photoshop.",
+        "image"     : "mario.jpg",
+        "date"      : "July, 2016"
+    }
+]
