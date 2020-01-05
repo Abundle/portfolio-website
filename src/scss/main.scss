@@ -995,7 +995,7 @@ noscript {
 }
 
 .menu-box1 {
-    @include box(url(../img/work_icon.svg), 50px);
+    @include box(url(../assets/img/work_icon.svg), 50px);
     z-index: 3;
     @include transform(translate3d(0, 0, 0) scale(1));
 
@@ -1013,7 +1013,7 @@ noscript {
     }
 }
 .menu-box2 {
-    @include box(url(../img/about_icon.svg), 50px);
+    @include box(url(../assets/img/about_icon.svg), 50px);
     z-index: 2;
     @include transform(translate3d(0, 0, 0) scale(1));
 
@@ -1026,7 +1026,7 @@ noscript {
     }
 }
 .menu-box3 {
-    @include box(url(../img/contact_icon.svg), 70px);
+    @include box(url(../assets/img/contact_icon.svg), 70px);
     z-index: 1;
     @include transform(translate3d(0, 0, 0) scale(1));
 
@@ -1513,7 +1513,7 @@ noscript {
     width: $sidebar-width;
     height: $exit-box-height;
     z-index: 4;
-    background: url(../img/exit_arrow.svg) no-repeat center $primary-color;
+    background: url(../assets/img/exit_arrow.svg) no-repeat center $primary-color;
     background-size: 18px;
     @include transition(background-color 300ms, top 200ms);
     cursor: pointer;
@@ -1537,7 +1537,7 @@ noscript {
     left: 0;
     width: $sidebar-width;
     height: $exit-box-height;
-    background: url(../img/back_arrow.svg) no-repeat center $secondary-color;
+    background: url(../assets/img/back_arrow.svg) no-repeat center $secondary-color;
     background-size: 18px;
     @include transition(background-color 300ms, top 200ms);
     cursor: pointer;
@@ -1695,7 +1695,7 @@ noscript {
 #map {
     width: 100%;
     height: 400px;
-    background: url(/src/img/contact_placeholder.png) no-repeat center $secondary-color;
+    background: url(/src/assets/img/contact_placeholder.png) no-repeat center $secondary-color;
 }
 
 /*#time {

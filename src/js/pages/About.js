@@ -1,22 +1,25 @@
-import { scrollMenu } from '../js/PageAnimations';
-import { pageTrigger } from '../js/index';
-import * as DOM from '../js/DOMFunctions';
+import { scrollMenu } from '../PageAnimations';
+import { pageTrigger } from '../index';
+import * as DOM from '../DOMFunctions';
 
-let wordCarouselButton = () => {
-    let clicks = 0,
-        words = [ // TODO: Check words
-            'programming',
-            'making graphic design stuff',
-            'games',
-            'low poly art',
-            'running',
-            'hanging out with friends',
-            'Black Mirror',
-            'making my homemade pesto',
-            'eating my homemade pesto',
-            // 'the Adobe software',
-            // 'my family',
-            'animals'];
+// Images
+import aboutImage from '../../assets/img/about.jpg';
+import meLandscapeImage from '../../assets/img/me_landscape.jpg';
+
+const wordCarouselButton = () => {
+    const words = [ // TODO: Check words
+        'programming',
+        'making graphic design stuff',
+        'games',
+        'low poly art',
+        'cycling',
+        'hanging out with friends',
+        'Kurzgesagt',
+        'making my homemade pesto',
+        'eating my homemade pesto',
+        'animals',
+    ];
+    let clicks = 0;
 
     document.getElementById('carousel-button').innerHTML = '<span>' + words[0] + ' 🔄' + '</span>';
 
@@ -34,7 +37,7 @@ let wordCarouselButton = () => {
     });
 };
 
-let About = {
+const About = {
     render : async () => {
         document.title = 'Aidan Bundel | About';
 
@@ -65,7 +68,7 @@ let About = {
 
                 <div class='canvas-container'>
                     <div class='content active'>
-                        <img class='img-about-fullscreen' src=${ require('../img/about.jpg') } alt='image'>
+                        <img class='img-about-fullscreen' src=${ aboutImage } alt='image'>
                         <!--<img class='img-about-fullscreen' src='/src/img/about.jpg' alt='image'>-->
 
                         <h1>ABOUT</h1>
@@ -96,7 +99,7 @@ let About = {
                             </p>
                         </div>
 
-                        <img class='img-about' src=${ require('../img/me_landscape.jpg') } alt='image'>
+                        <img class='img-about' src=${ meLandscapeImage } alt='image'>
                         <!--<img class='img-about' src='/src/img/me_landscape.jpg' alt='image'>-->
 
                         <footer-element></footer-element>

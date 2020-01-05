@@ -1,21 +1,22 @@
-import '../css/main.css';
 // Load webcomponents loader, which includes all the necessary polyfills
 // import '@webcomponents/webcomponentsjs/webcomponents-loader';
 
 // TODO: use await import?
-// Custom elements
-import Home from '../pages/Home';
-import Work from '../pages/Work';
-import About from '../pages/About';
-import Contact from '../pages/Contact';
-import Gallery from '../pages/Gallery';
-import Item from '../pages/Item';
-import Items from '../pages/gallery/items.json';
-import Error404 from '../pages/Error404';
+// Local import
+import Home from './pages/Home';
+import Work from './pages/Work';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Gallery from './pages/Gallery';
+import Item from './pages/Item';
+import items from './pages/gallery/items';
+import Error404 from './pages/Error404';
 
 import Utils from './Utils.js';
 import { intervalGallery, intervalCarousel } from './PageAnimations';
 import * as DOM from './DOMFunctions';
+
+import '../scss/main.scss';
 
 // TODO: also make the website work without JavaScript?
 // TODO: create type='module' javascript tag in index.html + Dev-server with ES6 JavaScript?
@@ -77,7 +78,7 @@ let loadContent = async (url, bool, type) => {
     // Check if request.id exists
     if (request.id) { // TODO: check what happens with /gallery/3/hi
         // Check if request.id is in the range of items
-        if (request.id <= Items.length && request.id > 0) {
+        if (request.id <= items.length && request.id > 0) {
             parsedURL += '/:id';
             page = routes[parsedURL] ? routes[parsedURL] : Error404;
             // page = routes[parsedURL];
@@ -92,7 +93,7 @@ let loadContent = async (url, bool, type) => {
         content.innerHTML = await page.render();
     }
 
-    // let id = request.id <= Items.length ? (request.id ? '/:id' : '') : 'Error404';
+    // let id = request.id <= items.length ? (request.id ? '/:id' : '') : 'Error404';
 
     //let parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '');
 

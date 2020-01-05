@@ -1,10 +1,17 @@
-import { scrollMenu } from '../js/PageAnimations';
-import { pageTrigger } from '../js/index';
-import * as DOM from '../js/DOMFunctions';
+import { scrollMenu } from '../PageAnimations';
+import { pageTrigger } from '../index';
+import * as DOM from '../DOMFunctions';
+
+// Icons
+import amsterdamIcon from '../../assets/img/amsterdam_icon.svg';
+import nameIcon from '../../assets/img/name_icon.svg';
+import mailIcon from '../../assets/img/mail_icon.svg';
+import linkedInIcon from '../../assets/img/linkedin_icon.svg';
+import gitHubIcon from '../../assets/img/github_icon.svg';
 
 // TODO: Contact tekst: working on different diy projects in my spare time
 
-let Contact = {
+const Contact = {
     render : async () => {
         document.title = 'Aidan Bundel | Contact';
 
@@ -49,7 +56,7 @@ let Contact = {
                                 </p>
 
                                 <p class='contact-extra-info'>
-                                    Currently based in <img src=${ require('../img/amsterdam_icon.svg') } id='amsterdam' alt='amsterdam'> Amsterdam.
+                                    Currently based in <img src=${ amsterdamIcon } id='amsterdam' alt='amsterdam'> Amsterdam.
 
                                     <!--Currently based in <img src='/src/img/eindhoven_icon.svg' id='eindhoven' alt='eindhoven'> Eindhoven,<br>
                                     originally from <img src='/src/img/amsterdam_icon.svg' id='amsterdam' alt='amsterdam'> Amsterdam.-->
@@ -70,25 +77,25 @@ let Contact = {
 
                             <div class='text-contact'>
                                 <div class='contact-icons'>
-                                    <img src=${ require('../img/name_icon.svg') } alt='image'>
+                                    <img src=${ nameIcon } alt='image'>
                                     <p>Aidan Bundel, developer</p>
                                 </div>
 
                                 <div class='contact-icons'>
-                                    <img src=${ require('../img/mail_icon.svg') } alt='image'>
+                                    <img src=${ mailIcon } alt='image'>
                                     <!--<p><a href='mailto:aid@anbundel.nl'>aid@nbundel.com</a></p>-->
                                     <p><a href='mailto:hi@aidanbundel.com'>hi@aidanbundel.com</a></p>
                                 </div>
 
                                 <div class='contact-icons'>
-                                    <img src=${ require('../img/linkedin_icon.svg') } alt='image'>
+                                    <img src=${ linkedInIcon } alt='image'>
                                     <!--<img src='/src/img/linkedin_icon.svg' alt='image'>-->
                                     <p><a href='https://www.linkedin.com/in/aidan-bundel-44b830137' target='_blank'>aidan-bundel</a>
                                     </p>
                                 </div>
                                 
                                 <div class='contact-icons'>
-                                    <img src=${ require('../img/github_icon.svg') } alt='image'>
+                                    <img src=${ gitHubIcon } alt='image'>
                                     <!--<img src='/src/img/linkedin_icon.svg' alt='image'>-->
                                     <p><a href='https://github.com/Abundle' target='_blank'>Abundle</a>
                                     </p>

@@ -1,6 +1,6 @@
-import * as DOM from '../js/DOMFunctions';
+import * as DOM from '../DOMFunctions';
 
-let Error404 = {
+const Error404 = {
     render : async () => {
         return /*language=HTML*/ `
             <div class='error'>

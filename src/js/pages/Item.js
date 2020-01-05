@@ -1,20 +1,20 @@
 // Credits to https://github.com/rishavs/vanillajs-spa
 // import Utils from '../js/Utils';
-import Items from './gallery/items.json';
-import * as DOM from '../js/DOMFunctions';
-import { pageTrigger } from '../js';
+import items from './gallery/items';
+import * as DOM from '../DOMFunctions';
+import { pageTrigger } from '../index';
 
-let Item = {
+const Item = {
     render: async (id) => { // TODO: check async necessity
         // let request = Utils.parseRequestURL();
         /*let resultArray = Items.filter((item) => {
             return item.id === Number.parseInt(id);
         });*/
         // let dataArray = Items.filter((item) => item.id === id + 1);
-        let leftItem = Items[id];
-        let item = Items[id - 1];
+        const leftItem = items[id];
+        const item = items[id - 1];
         // let item = resultArray[0];
-        let rightItem = Items[id - 2];
+        const rightItem = items[id - 2];
 
         /* let post = await getItem(id);
         let request = Utils.parseRequestURL();
@@ -26,15 +26,15 @@ let Item = {
 
                 <div class='gallery-fullscreen-container'>
                     <div class='gallery-image-canvas'>
-                        ${ item.id < Items.length ? `<img class='previous' src=${ require('../img/' + leftItem.image) } alt='image'>` : '' }
+                        ${ item.id < items.length ? `<img class='previous' src=${ leftItem.image } alt='image'>` : '' }
 
-                        <img class='current' src=${ require('../img/' + item.image) } alt='image'>
+                        <img class='current' src=${ item.image } alt='image'>
 
-                        ${ item.id > 1 ? `<img class='next' src=${ require('../img/' + rightItem.image) } alt='image'>` : '' }
+                        ${ item.id > 1 ? `<img class='next' src=${ rightItem.image } alt='image'>` : '' }
                     </div>
 
                     <div class='gallery-arrow-container'>
-                        ${ item.id < Items.length ? `
+                        ${ item.id < items.length ? `
                             <div class='gallery-arrow left'>
                                 <a href='/gallery/${ leftItem.id }' data-type='image-detail-go-previous'></a>
                             </div>

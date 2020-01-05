@@ -1,27 +1,57 @@
-import { scrollMenu } from '../js/PageAnimations';
-import { pageTrigger } from '../js/index';
-import * as DOM from '../js/DOMFunctions';
-import { TweenMax, CSSPlugin, ScrollToPlugin } from 'gsap/all';
+import { scrollMenu } from '../PageAnimations';
+import { pageTrigger } from '../index';
+import * as DOM from '../DOMFunctions';
+import {TweenMax, CSSPlugin, ScrollToPlugin, gsap} from 'gsap/all';
 // import { TweenMax } from 'gsap/all';
 // import { TweenMax } from 'gsap/TweenMaxBase';
 
 // Custom elements
 import '../components/Exit';
 
+// Icons
+import websiteIcon from '../../assets/img/website_icon.svg';
+import clientIcon from '../../assets/img/client_icon.svg';
+
+// Images
+import autarcoInfographicImage from '../../assets/img/autarco_infographic.jpg';
+import autarcoWebsiteImage from '../../assets/img/autarco_website.jpg';
+import linqSideImage from '../../assets/img/linq_side.jpg';
+import webAppImage from '../../assets/img/web_app.jpg';
+import sdmeTeamImage from '../../assets/img/sdme_team.jpg';
+import virtueContactCardsImage from '../../assets/img/virtue_contact_cards.jpg';
+import virtueBannerMockupsImage from '../../assets/img/virtue_banners_mockups.jpg';
+import aidenHandImage from '../../assets/img/aiden_hand.jpg'
+import aidenPhoneMockupImage from '../../assets/img/aiden_phone_mockup.jpg'
+import aidenMeImage from '../../assets/img/aiden_me.jpg';
+import aidenDemoDayImage from '../../assets/img/aiden_demo_day.jpg';
+import iipBear2Image from '../../assets/img/iip_bear2.jpg';
+import iipElectronicsImage from '../../assets/img/iip_electronics.jpg';
+import iipInterfaceImage from '../../assets/img/iip_interface.jpg';
+import iipBear1Image from '../../assets/img/iip_bear1.jpg';
+import radiomentaImage from '../../assets/img/radiomenta.jpg';
+import dashImage from '../../assets/img/dash.jpg';
+import dashSketchImage from '../../assets/img/dash_sketch.png';
+import navCapImage from '../../assets/img/navcap.jpg';
+import navCapMeImage from '../../assets/img/navcap_me.jpg';
+
+// Video
+import radiomentaVideo from '../../assets/video/radiomenta_video.mp4';
+
 // Without this line, CSSPlugin and AttrPlugin may get dropped by your bundler...
-const plugins = [CSSPlugin, ScrollToPlugin];
+gsap.registerPlugin(CSSPlugin);
+gsap.registerPlugin(ScrollToPlugin);
 
 // TODO: Upload all videos to YouTube?
 // TODO: Check <time> tags usage etc.
 // TODO: Stop videos automatically when you navigate the slider
 // TODO: Work VIRTUe video editen met logo intro + VIRTUe crowdfunding flyer & web app link & foto met mij en jordy erop
 
-let menuClick = () => {
-    let elements = document.querySelectorAll('li');
+const menuClick = () => {
+    const elements = document.querySelectorAll('li');
 
     for (let i = 0; i < elements.length; i++) {
         elements[i].addEventListener('click', (event) => {
-            let element = event.target,
+            const element = event.target,
                 // Get index numbered from top to bottom
                 index = Array.from(element.parentElement.children).indexOf(element),
                 linkIndex = element.id.split('-')[1],
@@ -56,7 +86,7 @@ let menuClick = () => {
     }
 };
 
-let Work = {
+const Work = {
     render : async () => {
         document.title = 'Aidan Bundel | Work';
 
@@ -117,7 +147,7 @@ let Work = {
                                         <div class='slider7 inner'>
                                             <label class='slider7 slide' for=slide1>
                                                 <input checked='checked' type=radio id=slide1 />
-                                                <img src=${ require('../img/autarco_infographic.jpg') } alt='image'>
+                                                <img src=${ autarcoInfographicImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Autarco solar system infographic from brochure</p>
@@ -126,7 +156,7 @@ let Work = {
 
                                             <label class='slider7 slide' for=slide2>
                                                 <input type=radio id=slide2 />
-                                                <img src=${ require('../img/autarco_website.jpg') } alt='image'>
+                                                <img src=${ autarcoWebsiteImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Autarco website</p>
@@ -141,7 +171,7 @@ let Work = {
                                     <p>
                                         Work &#9642; Graphic Design<br>
                                         <a href='https://autarco.com/' target='_blank'>
-                                            <img src=${ require('../img/website_icon.svg') } alt='link icon'> Autarco website
+                                            <img src=${ websiteIcon } alt='link icon'> Autarco website
                                         </a>
 
                                         <!--<br />
@@ -183,7 +213,7 @@ let Work = {
                                         <div class='slider6 inner'>
                                             <label class='slider6 slide' for=slide1>
                                                 <input checked='checked' type=radio id=slide1 />
-                                                <img src=${ require('../img/linq_side.jpg') } alt='image'>
+                                                <img src=${ linqSideImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>House LINQ</p>
@@ -192,7 +222,7 @@ let Work = {
 
                                             <label class='slider6 slide' for=slide2>
                                                 <input checked='checked' type=radio id=slide2 />
-                                                <img src=${ require('../img/web_app.jpg') } alt='image'>
+                                                <img src=${ webAppImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Web app</p>
@@ -201,7 +231,7 @@ let Work = {
 
                                             <label class='slider6 slide' for=slide3>
                                                 <input checked='checked' type=radio id=slide3 />
-                                                <img src=${ require('../img/sdme_team.jpg') } alt='image'>
+                                                <img src=${ sdmeTeamImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>This is how I look while cheering</p>
@@ -210,7 +240,7 @@ let Work = {
 
                                             <label class='slider6 slide' for=slide4>
                                                 <input type=radio id=slide4 />
-                                                <img src=${ require('../img/virtue_contact_cards.jpg') } alt='image'>
+                                                <img src=${ virtueContactCardsImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Contact cards design</p>
@@ -219,7 +249,7 @@ let Work = {
 
                                             <label class='slider6 slide' for=slide5>
                                                 <input type=radio id=slide5 />
-                                                <img src=${ require('../img/virtue_banners_mockups.jpg') } alt='image'>
+                                                <img src=${ virtueBannerMockupsImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Rollup banners design</p>
@@ -260,7 +290,7 @@ let Work = {
                                     <p>
                                         Extra-curricular &#9642; Graphic Design &#9642; Web & App Design<br>
                                         <a href='https://teamvirtue.nl/' target='_blank'>
-                                            <img src=${ require('../img/website_icon.svg') } alt='link icon'> VIRTUe website
+                                            <img src=${ websiteIcon } alt='link icon'> VIRTUe website
                                         </a>
 
                                         <!--<br />
@@ -310,7 +340,7 @@ let Work = {
                                         <div class='slider5 inner'>
                                             <label class='slider5 slide' for=slide1>
                                                 <input checked='checked' type=radio id=slide1 />
-                                                <img src=${ require('../img/aiden_hand.jpg') } alt='image'>
+                                                <img src=${ aidenHandImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Phone dock prototype</p>
@@ -319,7 +349,7 @@ let Work = {
 
                                             <label class='slider5 slide' for=slide2>
                                                 <input type=radio id=slide2 />
-                                                <img src=${ require('../img/aiden_phone_mockup.jpg') } alt='image'>
+                                                <img src=${ aidenPhoneMockupImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Digital assistant prototype</p>
@@ -328,7 +358,7 @@ let Work = {
 
                                             <label class='slider5 slide' for=slide3>
                                                 <input type=radio id=slide3 />
-                                                <img src=${ require('../img/aiden_me.jpg') } alt='image'>
+                                                <img src=${ aidenMeImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Me testing the prototype</p>
@@ -337,7 +367,7 @@ let Work = {
 
                                             <label class='slider5 slide' for=slide4>
                                                 <input type=radio id=slide4 />
-                                                <img src=${ require('../img/aiden_demo_day.jpg') } alt='image'>
+                                                <img src=${ aidenDemoDayImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Demo Day set-up</p>
@@ -367,13 +397,13 @@ let Work = {
                                         Final Bachelor Project &#9642; Interaction Design &#9642; Personal Assistent<br>
 
                                         <a href='https://www.hervitas.nl/' target='_blank'>
-                                            <img src=${ require('../img/client_icon.svg') } alt='client icon'> Hervitas
+                                            <img src=${ clientIcon } alt='client icon'> Hervitas
                                         </a>
 
                                         </br>
 
                                         <a href='http://aiden.aidanbundel.com/' target='_blank'>
-                                            <img src=${ require('../img/website_icon.svg') } alt='link icon'> Aiden assistant demo
+                                            <img src=${ websiteIcon } alt='link icon'> Aiden assistant demo
                                         </a>
 
                                         <!--<br/>
@@ -418,7 +448,7 @@ let Work = {
                                         <div class='slider4 inner'>
                                             <label class='slider4 slide' for=slide1>
                                                 <input checked='checked' type=radio name=slider id=slide1 />
-                                                <img src=${ require('../img/iip_bear2.jpg') } alt='image'>
+                                                <img src=${ iipBear2Image } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Lullabear final prototype</p>
@@ -436,7 +466,7 @@ let Work = {
                                             
                                             <label class='slider4 slide' for=slide2>
                                                 <input type=radio name=slider id=slide2 />
-                                                <img src=${ require('../img/iip_electronics.jpg') } alt='image'>
+                                                <img src=${ iipElectronicsImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Lullabear electronics case</p>
@@ -445,7 +475,7 @@ let Work = {
                                             
                                             <label class='slider4 slide' for=slide3>
                                                 <input type=radio name=slider id=slide3 />
-                                                <img src=${ require('../img/iip_interface.jpg') } alt='image'>
+                                                <img src=${ iipInterfaceImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Lullabear interface</p>
@@ -454,7 +484,7 @@ let Work = {
                                             
                                             <label class='slider4 slide' for=slide4>
                                                 <input type=radio name=slider id=slide4 />
-                                                <img src=${ require('../img/iip_bear1.jpg') } alt='image'>
+                                                <img src=${ iipBear1Image } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Lullabear first prototype</p>
@@ -503,7 +533,7 @@ let Work = {
                                         <div class='slider3 inner'>
                                             <label class='slider3 slide' for=slide1>
                                                 <input checked='checked' type=radio name=slider id=slide2 />
-                                                <img src=${ require('../img/radiomenta.jpg') } alt='image'>
+                                                <img src=${ radiomentaImage } alt='image'>
                                                 <!--<img src='/src/img/radiomenta.JPG' alt='image'>-->
 
                                                 <div class='img-description'>
@@ -514,7 +544,7 @@ let Work = {
                                             <label class='slider3 slide' for=slide1>
                                                 <input type=radio name=slider id=slide2 />
                                                 <video width='100%' controls>
-                                                    <source src=${ require('../vid/radiomenta_video.mp4') } type='video/mp4'>
+                                                    <source src=${ radiomentaVideo } type='video/mp4'>
                                                     <!--<source src='/src/vid/radiomenta_video.mp4' type='video/mp4'>-->
                                                     Your browser does not support the video tag.
                                                 </video>
@@ -532,7 +562,7 @@ let Work = {
                                     <p>
                                         Research Project &#9642; Social Inclusion<br>
                                         <a href='https://www.vitalisgroep.nl/' target='_blank'>
-                                            <img src=${ require('../img/client_icon.svg') } alt='client icon'> Vitalis
+                                            <img src=${ clientIcon } alt='client icon'> Vitalis
                                         </a>
                                     </p>
                                 </div>
@@ -569,7 +599,7 @@ let Work = {
                                         <div class='slider2 inner'>
                                             <label class='slider2 slide' for=slide1>
                                                 <input checked='checked' type=radio name=slider id=slide1 />
-                                                <img src=${ require('../img/dash.jpg') } alt='image'>
+                                                <img src=${ dashImage } alt='image'>
                                                 <!--<img src='/src/img/dash.jpg' alt='image'>-->
 
                                                 <div class='img-description'>
@@ -579,7 +609,7 @@ let Work = {
 
                                             <label class='slider2 slide' for=slide2>
                                                 <input type=radio name=slider id=slide2 />
-                                                <img src=${ require('../img/dash_sketch.png') } alt='image'>
+                                                <img src=${ dashSketchImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Dash sketches</p>
@@ -623,7 +653,7 @@ let Work = {
                                         <div class='slider1 inner'>
                                             <label class='slider1 slide' for=slide1>
                                                 <input checked='checked' type=radio name=slider id=slide1 />
-                                                <img src=${ require('../img/navcap.jpg') } alt='image'>
+                                                <img src=${ navCapImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>NavCap hat prototype</p>
@@ -632,7 +662,7 @@ let Work = {
 
                                             <label class='slider1 slide' for=slide2>
                                                 <input type=radio name=slider id=slide2 />
-                                                <img src=${ require('../img/navcap_me.jpg') } alt='image'>
+                                                <img src=${ navCapMeImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Programming in the Arduino environment</p>

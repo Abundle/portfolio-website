@@ -1,11 +1,9 @@
-import Items from './gallery/items.json';
-import * as DOM from '../js/DOMFunctions';
-import {pageTrigger} from '../js';
+import items from './gallery/items';
+import * as DOM from '../DOMFunctions';
+import { pageTrigger } from '../index';
 
-let Gallery = {
+const Gallery = {
     render : async () => {
-        let items = Items;
-
         document.title = 'Aidan Bundel | Gallery';
 
         return /*language=HTML*/`
@@ -69,7 +67,7 @@ let Gallery = {
                         ${ items.slice(0).reverse().map((item) => `
                             <div class='gallery-slide-${ item.id }'>
                                 <a href='/gallery/${ item.id }' data-type='image-detail'>
-                                    <img src=${ require('../img/' + item.image) } alt='image'>
+                                    <img src=${ item.image } alt='image'>
                                     <!--<img src='src/img/placeholder.jpg' alt='image'>-->
                                 </a>
                             </div>

@@ -1,16 +1,15 @@
-import { scrollMenu } from '../js/PageAnimations';
-import Items from './gallery/items.json';
-import { pageTrigger } from '../js/index';
+import { scrollMenu } from '../PageAnimations';
+import items from './gallery/items';
+import { pageTrigger } from '../index';
 
 // Custom elements
 import '../components/MobileMenu';
 import '../components/Footer';
 // import MobileMenu from '../components/MobileMenu';
 
-let Home = {
-    render : async () => {
-        let items = Items;
-        let id = items.length - 1;
+const Home = {
+    render: async () => {
+        const id = items.length - 1;
 
         document.title = 'Aidan Bundel | Developer';
 
@@ -64,9 +63,9 @@ let Home = {
                         </div>
 
                         <div class='mobile-carousel-container'>
-                            <img class='carousel-slide-2' src=${ require('../img/' + items[id].image) } alt='image'>
-                            <img class='carousel-slide-2' src=${ require('../img/' + items[id - 3].image) } alt='image'>
-                            <img class='carousel-slide-3' src=${ require('../img/' + items[id - 6].image) } alt='image'>
+                            <img class='carousel-slide-2' src=${ items[id].image } alt='image'>
+                            <img class='carousel-slide-2' src=${ items[id - 3].image } alt='image'>
+                            <img class='carousel-slide-3' src=${ items[id - 6].image } alt='image'>
                             <!--<img class='carousel-slide-4' src='' alt='image'>-->
                         </div>
                         
@@ -79,7 +78,7 @@ let Home = {
                 <div class='carousel-container'>
                     <div class='carousel-slides-container'>
                         <div class='carousel-slide-1'>
-                            <img class='carousel-slide-1' src=${ require('../img/' + items[id].image) } alt='image'>
+                            <img class='carousel-slide-1' src=${ items[id].image } alt='image'>
 
                             <!-- don't remove just yet
                             <div class='img-overlay'>
@@ -88,11 +87,11 @@ let Home = {
                         </div>
 
                         <div class='carousel-slide-2'>
-                            <img src=${ require('../img/' + items[id - 3].image) } alt='image'>
+                            <img src=${ items[id - 3].image } alt='image'>
                         </div>
 
                         <div class='carousel-slide-3'>
-                            <img src=${ require('../img/' + items[id - 6].image) } alt='image'>
+                            <img src=${ items[id - 6].image } alt='image'>
                         </div>
 
                         <!--<div class='carousel-slide-4'>
