@@ -1,7 +1,7 @@
 // Credits to https://github.com/rishavs/vanillajs-spa
 // import Utils from '../js/Utils';
-import items from './gallery/items';
-import * as DOM from '../DOMFunctions';
+import items from '../utils/items';
+import * as DOM from '../utils/DOMFunctions';
 import { pageTrigger } from '../index';
 
 const Item = {
@@ -20,7 +20,7 @@ const Item = {
         let request = Utils.parseRequestURL();
         let post = await getItem(request.id);*/
 
-        return /*language=HTML*/ `
+        return `
             <div class='gallery-${ item.id }'>
                 <div class='back drop-down'><a href='/gallery' data-type='image-detail-go-back'></a></div>
 

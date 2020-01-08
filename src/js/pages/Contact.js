@@ -1,6 +1,8 @@
-import { scrollMenu } from '../PageAnimations';
+import moment from 'moment-timezone';
+
+import { scrollMenu } from '../utils/PageAnimations';
 import { pageTrigger } from '../index';
-import * as DOM from '../DOMFunctions';
+import * as DOM from '../utils/DOMFunctions';
 
 // Icons
 import amsterdamIcon from '../../assets/img/amsterdam_icon.svg';
@@ -9,13 +11,14 @@ import mailIcon from '../../assets/img/mail_icon.svg';
 import linkedInIcon from '../../assets/img/linkedin_icon.svg';
 import gitHubIcon from '../../assets/img/github_icon.svg';
 
-// TODO: Contact tekst: working on different diy projects in my spare time
+const time = moment.tz('Europe/Amsterdam').format('h:mm A');
+const outputTime = `It is now ${ time } in <img src=${ amsterdamIcon } id='amsterdam' alt='amsterdam'> Amsterdam.`;
 
 const Contact = {
     render : async () => {
         document.title = 'Aidan Bundel | Contact';
 
-        return /*language=HTML*/ `
+        return `
             <div class='contact'>
                 <div class='exit drop-down'><a href='/' data-type='page-exit'></a></div>
 
@@ -47,31 +50,19 @@ const Contact = {
                         <div class='section-contact'>
                             <div class='text-contact'>
                                 <p>
-                                This website was created with plain JavaScript, SASS and bundled with Webpack. Currently
-                                I am spending my free time smashing some of the bugs that nestled around here 🚧 and 
-                                having fun trying to program everything without frameworks 🤪.<br>
+                                Currently I am studying for a Master's degree in Computing Science at Utrecht University.
+                                In my free time I like to work on pet projects, such as 
+                                <a href='https://sandbox.aidanbundel.com/' target='_blank'>this one</a>.<br>
                                 <br>
                                 If you&#39;d like to get in touch to talk about work related stuff, any other stuff
                                 or just say hi, no need to hesitate. I&#39;ll be waiting, patiently.<br>
                                 </p>
 
                                 <p class='contact-extra-info'>
-                                    Currently based in <img src=${ amsterdamIcon } id='amsterdam' alt='amsterdam'> Amsterdam.
-
-                                    <!--Currently based in <img src='/src/img/eindhoven_icon.svg' id='eindhoven' alt='eindhoven'> Eindhoven,<br>
-                                    originally from <img src='/src/img/amsterdam_icon.svg' id='amsterdam' alt='amsterdam'> Amsterdam.-->
-
-                                    <!--Aidan's local time:<br>
-                                    <span id='time'></span>
-            
-                                    <script type='text/javascript'>
-                                        /*global moment*/
-            
-                                        var time = moment().tz('Europe/Amsterdam').format('h:mm a'),
-                                            outputTime = 'It is now ' + time + ' in Eindhoven';
-            
-                                        document.getElementById('time').innerHTML = outputTime;
-                                    </script>-->
+                                    Aidan's local time:<br>
+                                    <span id='my-time'></span><br>
+                                    <br>
+                                    This website was created with JavaScript, stylised with SCSS and bundled with Webpack.<br>
                                 </p>
                             </div>
 
@@ -124,6 +115,8 @@ const Contact = {
         document.querySelectorAll('[data-type*="page-exit"]').forEach((element) => {
             element.addEventListener('click', (event) => pageTrigger(event));
         });
+
+        document.getElementById('my-time').innerHTML = outputTime;
     },
     load: async () => { // TODO: Check bottom canvas sliding in
         // console.log('Contact loaded');
@@ -137,6 +130,8 @@ const Contact = {
         document.querySelectorAll('[data-type*="page-exit"]').forEach((element) => {
             element.addEventListener('click', (event) => pageTrigger(event));
         });
+
+        document.getElementById('my-time').innerHTML = outputTime;
 
         DOM.select('.canvas').removeClass('half-open');
         DOM.select('.canvas').addClass('closed');

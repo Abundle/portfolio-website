@@ -1,12 +1,12 @@
-import carPaintingImage from '../../../assets/img/car_painting.jpg';
-import raymanHoodmongerImage from '../../../assets/img/rayman_hoodmonger.jpg';
-import artDecoImage from '../../../assets/img/art_deco.jpg';
-import iPodPhotoshopImage from '../../../assets/img/ipod_photoshop.jpg';
-import visualReflectionImage from '../../../assets/img/visual_reflection.jpg';
-import houseRenderImage from '../../../assets/img/house_render.jpg';
-import linqRender1Image from '../../../assets/img/linq_render_1.jpg';
-import linqRender2Image from '../../../assets/img/linq_render_2.jpg';
-import linqRender3Image from '../../../assets/img/linq_render_3.jpg';
+import carPaintingImage from '../../assets/img/car_painting.jpg';
+import raymanHoodmongerImage from '../../assets/img/rayman_hoodmonger.jpg';
+import artDecoImage from '../../assets/img/art_deco.jpg';
+import iPodPhotoshopImage from '../../assets/img/ipod_photoshop.jpg';
+import visualReflectionImage from '../../assets/img/visual_reflection.jpg';
+import houseRenderImage from '../../assets/img/house_render.jpg';
+import linqRender1Image from '../../assets/img/linq_render_1.jpg';
+import linqRender2Image from '../../assets/img/linq_render_2.jpg';
+import linqRender3Image from '../../assets/img/linq_render_3.jpg';
 
 const items = [
     {

@@ -1,12 +1,14 @@
-import items from './gallery/items';
-import * as DOM from '../DOMFunctions';
+import items from '../utils/items';
+import * as DOM from '../utils/DOMFunctions';
 import { pageTrigger } from '../index';
+
+// TODO: add ability to group the images. Gallery can then be used for all side/pet-projects instead of just graphic designs
 
 const Gallery = {
     render : async () => {
         document.title = 'Aidan Bundel | Gallery';
 
-        return /*language=HTML*/`
+        return `
             <div class='gallery'>           
                 <mobile-menu page='gallery'></mobile-menu>
             
@@ -63,6 +65,7 @@ const Gallery = {
                 </section>
             
                 <div class='gallery-container'>
+<!--                    <h1 style='position: absolute'>Lorem ipsum</h1>-->
                     <div class='gallery-slides'>
                         ${ items.slice(0).reverse().map((item) => `
                             <div class='gallery-slide-${ item.id }'>

@@ -1,6 +1,6 @@
-import { scrollMenu } from '../PageAnimations';
+import { scrollMenu } from '../utils/PageAnimations';
 import { pageTrigger } from '../index';
-import * as DOM from '../DOMFunctions';
+import * as DOM from '../utils/DOMFunctions';
 
 // Images
 import aboutImage from '../../assets/img/about.jpg';
@@ -8,10 +8,8 @@ import meLandscapeImage from '../../assets/img/me_landscape.jpg';
 
 const wordCarouselButton = () => {
     const words = [ // TODO: Check words
-        'programming',
-        'making graphic design stuff',
-        'games',
         'low poly art',
+        'games',
         'cycling',
         'hanging out with friends',
         'Kurzgesagt',
@@ -41,7 +39,7 @@ const About = {
     render : async () => {
         document.title = 'Aidan Bundel | About';
 
-        return /*language=HTML*/ `
+        return `
             <div class='about'>
                 <div class='exit drop-down'><a href='/' data-type='page-exit'></a></div>
 
@@ -76,14 +74,10 @@ const About = {
                         <div class='text-about'>
                             <p>My name is <b>Aidan Bundel</b> and I love <button id='carousel-button'></button>.<br>                          
                             <br>
-                            I recently graduated from Eindhoven University of Technology (TU/e) with a Bachelor degree 
+                            I graduated in 2018 from Eindhoven University of Technology (TU/e) with a Bachelor degree 
                             in <b>Industrial Design</b> in the Netherlands. I became quite passionate about digital
                             design: graphic design, animating, web design and (web) programming. <br>
-                            Besides my studies I was one of the founders of VIRTUe, a new TU/e student team. We 
-                            participated in the <b><a href='https://www.solardecathlonme.com/' target="_blank">Solar 
-                            Decathlon</a></b> set in Dubai, where 15 student teams from all over the world designed, 
-                            operated and built a sustainable home and competed against each other on ten sub-categories.
-                            We ended up in 6th place 😄.<br>
+                            Currently I am studying for a Master's degree in <b>Computing Science</b> at Utrecht University.<br>
                             <br>
                             I grew up in a small village near Amsterdam. Not many people are familiar with this tiny
                             paradise called Landsmeer, therefore it's okay to say I am from Amsterdam.<br>

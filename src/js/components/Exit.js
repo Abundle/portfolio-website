@@ -5,7 +5,7 @@ class Exit extends HTMLElement {
     }
 
     connectedCallback() {
-        this.innerHTML = /*language=HTML*/ `
+        this.innerHTML = `
             <div class='exit drop-down'><a href='/' data-type='page-exit'></a></div>
         `;
     }

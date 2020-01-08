@@ -1,5 +1,5 @@
-import { scrollMenu } from '../PageAnimations';
-import items from './gallery/items';
+import { scrollMenu } from '../utils/PageAnimations';
+import items from '../utils/items';
 import { pageTrigger } from '../index';
 
 // Custom elements
@@ -15,7 +15,7 @@ const Home = {
 
         // console.log('/src/img/' + items[id].image);
 
-        return /*language=HTML*/ `
+        return `
             <div class='index'>
                 <mobile-menu page='home'></mobile-menu>
 

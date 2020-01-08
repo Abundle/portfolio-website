@@ -1,8 +1,8 @@
-import * as DOM from '../DOMFunctions';
+import * as DOM from '../utils/DOMFunctions';
 
 const Error404 = {
     render : async () => {
-        return /*language=HTML*/ `
+        return `
             <div class='error'>
                 <h1 style='color: white'>404 Error</h1>
                 <h1 style='color: white'>Whoops</h1>

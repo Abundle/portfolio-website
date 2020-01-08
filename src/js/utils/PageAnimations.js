@@ -1,64 +1,58 @@
 import * as DOM from './DOMFunctions';
-import { TweenMax, CSSPlugin } from 'gsap/all';
+import { TweenMax, CSSPlugin, gsap } from 'gsap/all';
 // import { TweenMax } from 'gsap/all';
 
 // Without this line, CSSPlugin and AttrPlugin may get dropped by your bundler...
-const plugins = [CSSPlugin];
+gsap.registerPlugin(CSSPlugin);
 
-export let scrollMenu = () => {  // TODO: dynamically add headers
-    let menuBox = document.querySelector('.menu-box1'),
+export const scrollMenu = () => {  // TODO: rewrite function using Observer API
+    const menuBox = document.querySelector('.menu-box1'),
         menuBoxHeight = menuBox.clientHeight,
         // menuBoxHeight = menuBox.height(),
         menuBoxCenterY = menuBoxHeight / 2 + 20,
         listElementHeight = 50; //$('.sub-menu li').height()
 
-    let headerOne = document.getElementById('link1').offsetTop + 80, //50
+    const headerOne = document.getElementById('link1').offsetTop + 80, //50
         headerTwo = document.getElementById('link2').offsetTop + 80,
         headerThree = document.getElementById('link3').offsetTop + 80,
         headerFour = document.getElementById('link4').offsetTop + 80,
         headerFive = document.getElementById('link5').offsetTop + 80,
-        headerSix = document.getElementById('link6').offsetTop + 80,
-        headerSeven = document.getElementById('link7').offsetTop + 80;
+        headerSix = document.getElementById('link6').offsetTop + 80;
 
-    let element = document.getElementsByClassName('sub-menu-container'),
+    const element = document.getElementsByClassName('sub-menu-container'),
         duration = 0.1;
 
-    if (window.scrollY > 0 && window.scrollY < headerSeven) {
+    if (window.scrollY > 0 && window.scrollY < headerSix) {
         TweenMax.to(element, duration, {
-            top: menuBoxCenterY,
-        });
-    }
-    else if (window.scrollY > headerSeven && window.scrollY < headerSix) {
-        TweenMax.to(element, duration, {
-            top: menuBoxCenterY - listElementHeight
+            top: menuBoxCenterY
         });
     } else if (window.scrollY > headerSix && window.scrollY < headerFive) {
         TweenMax.to(element, duration, {
-            top: menuBoxCenterY - (listElementHeight * 2)
+            top: menuBoxCenterY - listElementHeight
         });
     } else if (window.scrollY > headerFive && window.scrollY < headerFour) {
         TweenMax.to(element, duration, {
-            top: menuBoxCenterY - (listElementHeight * 3)
+            top: menuBoxCenterY - (listElementHeight * 2)
         });
     } else if (window.scrollY > headerFour && window.scrollY < headerThree) {
         TweenMax.to(element, duration, {
-            top: menuBoxCenterY - (listElementHeight * 4)
+            top: menuBoxCenterY - (listElementHeight * 3)
         });
     } else if (window.scrollY > headerThree && window.scrollY < headerTwo) {
         TweenMax.to(element, duration, {
-            top: menuBoxCenterY - (listElementHeight * 5)
+            top: menuBoxCenterY - (listElementHeight * 4)
         });
     } else if (window.scrollY > headerTwo && window.scrollY < headerOne) {
         TweenMax.to(element, duration, {
-            top: menuBoxCenterY - (listElementHeight * 6)
+            top: menuBoxCenterY - (listElementHeight * 5)
         });
     }
 };
 
-export let intervalMenuBoxes = (classElement) => {
+export const intervalMenuBoxes = (classElement) => {
     let count = 0;
 
-    let interval = window.setInterval(() => {
+    const interval = window.setInterval(() => {
         DOM.select('.menu-box' + count).addClass(classElement);
         count += 1;
         //console.log(count);
@@ -69,7 +63,7 @@ export let intervalMenuBoxes = (classElement) => {
     }, 250);
 };
 
-export let intervalGallery = (className, bool) => {
+export const intervalGallery = (className, bool) => {
     let slides = 28,
         columns,
         endOfLoop;
@@ -104,10 +98,10 @@ export let intervalGallery = (className, bool) => {
     }
 };
 
-export let intervalCarousel = (bool) => {
+export const intervalCarousel = (bool) => {
     let count = 1;
 
-    let interval = window.setInterval(() => {
+    const interval = window.setInterval(() => {
         bool ? DOM.selectAll('.carousel-slide-' + count).addClass('fade-out')
             : DOM.selectAll('.carousel-slide-' + count).removeClass('fade-out');
         // DOM.selectAll('.carousel-slide-' + count).toggleClass('fade-out', bool);

@@ -8,8 +8,8 @@ const Utils = {
     parseRequestURL: (url = location.pathname) => {
         // url = location.pathname || '/';
         // let url = location.hash.slice(1).toLowerCase() || '/';
-        let r = url.split('/');
-        let request = {
+        const r = url.split('/');
+        const request = {
             resource    : null,
             id          : null
         };

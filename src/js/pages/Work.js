@@ -1,6 +1,6 @@
-import { scrollMenu } from '../PageAnimations';
+import { scrollMenu } from '../utils/PageAnimations';
 import { pageTrigger } from '../index';
-import * as DOM from '../DOMFunctions';
+import * as DOM from '../utils/DOMFunctions';
 import {TweenMax, CSSPlugin, ScrollToPlugin, gsap} from 'gsap/all';
 // import { TweenMax } from 'gsap/all';
 // import { TweenMax } from 'gsap/TweenMaxBase';
@@ -13,11 +13,19 @@ import websiteIcon from '../../assets/img/website_icon.svg';
 import clientIcon from '../../assets/img/client_icon.svg';
 
 // Images
+import fruitPunchLogoImage from '../../assets/img/fruitpunch_corporate_identity.jpg';
+import fruitPunchFlyerImage from '../../assets/img/fruitpunch_flyer.jpg';
+import fruitPunchContactCardsImage from '../../assets/img/fruitpunch_contact_cards.jpg';
+import fruitPunchWebsiteImage from '../../assets/img/fruitpunch_website.jpg';
+import fruitPunchTshirtImage from '../../assets/img/fruitpunch_tshirt.jpg';
 import autarcoInfographicImage from '../../assets/img/autarco_infographic.jpg';
 import autarcoWebsiteImage from '../../assets/img/autarco_website.jpg';
 import linqSideImage from '../../assets/img/linq_side.jpg';
 import webAppImage from '../../assets/img/web_app.jpg';
+import webAppInterfaceImage from '../../assets/img/virtue_webapp_interface.png';
 import sdmeTeamImage from '../../assets/img/sdme_team.jpg';
+import virtueWebsiteImage from '../../assets/img/virtue_website_mockups.jpg';
+import virtueLogoImage from '../../assets/img/virtue_corporate_identity.png';
 import virtueContactCardsImage from '../../assets/img/virtue_contact_cards.jpg';
 import virtueBannerMockupsImage from '../../assets/img/virtue_banners_mockups.jpg';
 import aidenHandImage from '../../assets/img/aiden_hand.jpg'
@@ -29,10 +37,6 @@ import iipElectronicsImage from '../../assets/img/iip_electronics.jpg';
 import iipInterfaceImage from '../../assets/img/iip_interface.jpg';
 import iipBear1Image from '../../assets/img/iip_bear1.jpg';
 import radiomentaImage from '../../assets/img/radiomenta.jpg';
-import dashImage from '../../assets/img/dash.jpg';
-import dashSketchImage from '../../assets/img/dash_sketch.png';
-import navCapImage from '../../assets/img/navcap.jpg';
-import navCapMeImage from '../../assets/img/navcap_me.jpg';
 
 // Video
 import radiomentaVideo from '../../assets/video/radiomenta_video.mp4';
@@ -90,7 +94,7 @@ const Work = {
     render : async () => {
         document.title = 'Aidan Bundel | Work';
 
-        return /*language=HTML*/ `
+        return `
             <div class='work'>
                 <exit-element></exit-element>
                 <!--<div class='exit drop-down'><a href='/' data-type='page-exit'></a></div>-->
@@ -100,13 +104,12 @@ const Work = {
                 <section class='menu-box-container stacked'>
                     <nav class='sub-menu open'>
                         <div class='sub-menu-container'>
-                            <li id='submenu-7' class='slide'>Autarco</li>
-                            <li id='submenu-6' class='slide'>VIRTUe</li>
-                            <li id='submenu-5' class='slide'>Aiden</li>
-                            <li id='submenu-4' class='slide'>Lullabear</li>
-                            <li id='submenu-3' class='slide'>Radiomenta</li>
-                            <li id='submenu-2' class='slide'>Dash</li>
-                            <li id='submenu-1' class='slide'>NavCap</li>
+                            <li id='submenu-6' class='slide'>FruitPunch AI</li>
+                            <li id='submenu-5' class='slide'>VIRTUe</li>
+                            <li id='submenu-4' class='slide'>Autarco</li>
+                            <li id='submenu-3' class='slide'>Aiden</li>
+                            <li id='submenu-2' class='slide'>Lullabear</li>
+                            <li id='submenu-1' class='slide'>Radiomenta</li>
                         </div>
                     </nav>
 
@@ -131,35 +134,65 @@ const Work = {
                 <div class='canvas-container'>
                     <div class='content active'>
                     
-                        <section class='section-work'>
+                    <section class='section-work'>
                             <div class='visuals-work'>
-                                <h2 id='link7'>Autarco</h2>
+                                <h2 id='link6'>Student Team FruitPunch AI</h2>
 
-                                <h3>Graphic design for a company specialised in solar PV technology</h3>
-
+                                <h3>Artificial Intelligence in E-sports</h3>
+                                
                                 <div class='slideshow'>
                                     <div class='controls'>
-                                        <label class='checked' for=slider7></label>
-                                        <label for=slider7></label>
+                                        <label class='checked' for=slider6></label>
+                                        <label for=slider6></label>
+                                        <label for=slider6></label>
+                                        <label for=slider6></label>
+                                        <label for=slider6></label>
                                     </div>
 
                                     <div class='overflow'>
-                                        <div class='slider7 inner'>
-                                            <label class='slider7 slide' for=slide1>
+                                        <div class='slider6 inner'>
+                                            <label class='slider6 slide' for=slide1>
                                                 <input checked='checked' type=radio id=slide1 />
-                                                <img src=${ autarcoInfographicImage } alt='image'>
+                                                <img src=${ fruitPunchLogoImage } alt='image'>
 
                                                 <div class='img-description'>
-                                                    <p>Autarco solar system infographic from brochure</p>
+                                                    <p>FruitPunch AI corporate identity</p>
+                                                </div>
+                                            </label>  
+                                                                                      
+                                            <label class='slider6 slide' for=slide2>
+                                                <input type=radio id=slide2 />
+                                                <img src=${ fruitPunchFlyerImage } alt='image'>
+
+                                                <div class='img-description'>
+                                                    <p>FruitPunch AI flyer</p>
                                                 </div>
                                             </label>
 
-                                            <label class='slider7 slide' for=slide2>
-                                                <input type=radio id=slide2 />
-                                                <img src=${ autarcoWebsiteImage } alt='image'>
+                                            <label class='slider6 slide' for=slide3>
+                                                <input type=radio id=slide3 />
+                                                <img src=${ fruitPunchContactCardsImage } alt='image'>
 
                                                 <div class='img-description'>
-                                                    <p>Autarco website</p>
+                                                    <p>FruitPunch AI contact cards</p>
+                                                </div>
+                                            </label>
+                                            
+                                            <label class='slider6 slide' for=slide4>
+                                                <input type=radio id=slide4 />
+                                                <img src=${ fruitPunchWebsiteImage } alt='image'>
+
+                                                <div class='img-description'>
+                                                    <p>FruitPunch AI website</p>
+                                                </div>
+                                            </label>
+                                            
+                                            <label class='slider6 slide' for=slide5>
+                                                <input type=radio id=slide5 />
+                                                <img src=${ fruitPunchTshirtImage } alt='image'>
+
+                                                <div class='img-description'>
+                                                    <p>FruitPunch AI event T-shirt</p>
                                                 </div>
                                             </label>
                                         </div>
@@ -167,11 +200,11 @@ const Work = {
                                 </div>
 
                                 <div class='metadata-work'>
-                                    <time>January 2018 - Now</time>
+                                    <time>January 2019 - Now</time>
                                     <p>
-                                        Work &#9642; Graphic Design<br>
-                                        <a href='https://autarco.com/' target='_blank'>
-                                            <img src=${ websiteIcon } alt='link icon'> Autarco website
+                                        Graphic Design &#9642; Web Design<br>
+                                        <a href='https://fruitpunch.ai/' target='_blank'>
+                                            <img src=${ websiteIcon } alt='link icon'> FruitPunch AI website
                                         </a>
 
                                         <!--<br />
@@ -184,34 +217,40 @@ const Work = {
                             </div>
 
                             <div class='text-work'>
-                                <p>Autarco is a Dutch company located in Eindhoven that deliver complete solar panel
-                                    systems. I started working at Autarco in January 2018 on redesigning the visual identity
-                                    an branding of the company. Based on new branding guidelines me and a colleague had set up,
-                                    we created several promotion materials related to solar PV technologies.<br/>
-                                    <br />
+                                <p>FruitPunch AI is a relatively new <a href='https://www.tue.nl/en/tue-campus/meeting-working-together/student-teams/' target='_blank'>
+                                student team</a> at Eindhoven University of Technology.
+                                The aim to educate people by presenting them with cutting-edge technology of applied AI 
+                                through masterclasses, weekly AI Code sessions and an AI-esports competition to apply AI 
+                                for Good. This platform of sharing knowledge further contributes to the university education.<br>
+                                <br>
+                                For the team redesigned the <b>logo</b> and set up the basis for the <b>branding</b>. 
+                                Currently my work is focused on creating <b>promotional material</b> for events and workshops. 
                                 </p>
                             </div>
                         </section>
-
+                        
                         <section class='section-work'>
                             <div class='visuals-work'>
-                                <h2 id='link6'>Student Team VIRTUe</h2>
+                                <h2 id='link5'>Student Team VIRTUe</h2>
 
-                                <h3>Building a sustainable home</h3>
+                                <h3>Building a sustainable home for an international competition</h3>
 
                                 <div class='slideshow'>
                                     <div class='controls'>
-                                        <label class='checked' for=slider6></label>
-                                        <label for=slider6></label>
-                                        <label for=slider6></label>
-                                        <label for=slider6></label>
-                                        <label for=slider6></label>
-                                        <label for=slider6></label>
+                                        <label class='checked' for=slider5></label>
+                                        <label for=slider5></label>
+                                        <label for=slider5></label>
+                                        <label for=slider5></label>
+                                        <label for=slider5></label>
+                                        <label for=slider5></label>
+                                        <label for=slider5></label>
+                                        <label for=slider5></label>
+                                        <label for=slider5></label>
                                     </div>
 
                                     <div class='overflow'>
-                                        <div class='slider6 inner'>
-                                            <label class='slider6 slide' for=slide1>
+                                        <div class='slider5 inner'>
+                                            <label class='slider5 slide' for=slide1>
                                                 <input checked='checked' type=radio id=slide1 />
                                                 <img src=${ linqSideImage } alt='image'>
 
@@ -220,26 +259,53 @@ const Work = {
                                                 </div>
                                             </label>
 
-                                            <label class='slider6 slide' for=slide2>
-                                                <input checked='checked' type=radio id=slide2 />
+                                            <label class='slider5 slide' for=slide2>
+                                                <input type=radio id=slide2 />
                                                 <img src=${ webAppImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>Web app</p>
                                                 </div>
                                             </label>
+                                            
+                                            <label class='slider5 slide' for=slide3>
+                                                <input type=radio id=slide3 />
+                                                <img src=${ webAppInterfaceImage } alt='image'>
 
-                                            <label class='slider6 slide' for=slide3>
-                                                <input checked='checked' type=radio id=slide3 />
+                                                <div class='img-description'>
+                                                    <p>Web app interface concept</p>
+                                                </div>
+                                            </label>
+
+                                            <label class='slider5 slide' for=slide4>
+                                                <input type=radio id=slide4 />
                                                 <img src=${ sdmeTeamImage } alt='image'>
 
                                                 <div class='img-description'>
                                                     <p>This is how I look while cheering</p>
                                                 </div>
                                             </label>
+                                            
+                                            <label class='slider5 slide' for=slide5>
+                                                <input type=radio id=slide5 />
+                                                <img src=${ virtueWebsiteImage } alt='image'>
 
-                                            <label class='slider6 slide' for=slide4>
-                                                <input type=radio id=slide4 />
+                                                <div class='img-description'>
+                                                    <p>VIRTUe website design</p>
+                                                </div>
+                                            </label>
+                                            
+                                            <label class='slider5 slide' for=slide6>
+                                                <input type=radio id=slide6 />
+                                                <img src=${ virtueLogoImage } alt='image'>
+
+                                                <div class='img-description'>
+                                                    <p>VIRTUe corporate identity</p>
+                                                </div>
+                                            </label>
+
+                                            <label class='slider5 slide' for=slide7>
+                                                <input type=radio id=slide7 />
                                                 <img src=${ virtueContactCardsImage } alt='image'>
 
                                                 <div class='img-description'>
@@ -247,8 +313,8 @@ const Work = {
                                                 </div>
                                             </label>
 
-                                            <label class='slider6 slide' for=slide5>
-                                                <input type=radio id=slide5 />
+                                            <label class='slider5 slide' for=slide8>
+                                                <input type=radio id=slide8 />
                                                 <img src=${ virtueBannerMockupsImage } alt='image'>
 
                                                 <div class='img-description'>
@@ -256,8 +322,8 @@ const Work = {
                                                 </div>
                                             </label>
 
-                                            <label class='slider6 slide' for=slide6>
-                                                <input type=radio id=slide6 />
+                                            <label class='slider5 slide' for=slide9>
+                                                <input type=radio id=slide9 />
 
                                                 <iframe
                                                 src='https://www.youtube-nocookie.com/embed/HQrPapE-F9M' 
@@ -293,52 +359,117 @@ const Work = {
                                             <img src=${ websiteIcon } alt='link icon'> VIRTUe website
                                         </a>
 
-                                        <!--<br />
+                                        <br />
 
                                         <a href='https://teamvirtue.nl/webapp/' target='_blank'>
-                                            <img src={ require('../img/website_icon.svg') } alt='link icon'> Web app for LINQ
+                                            <img src=${ websiteIcon } alt='link icon'> Web app for LINQ
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class='text-work'>
+                                <p>What started as a project from my university's <b>Honors Academy</b>, resulted in an official 
+                                new student team, called VIRTUe. For three years I have worked with a large 
+                                multi-disciplinary team to compete in the <b>Solar Decathlon Middle East 2018 edition (SDME)</b> 
+                                in Dubai. This is an international competition where 16 university teams from all over the 
+                                world designed, operated and built a sustainable home and competed against each other on 
+                                ten sub-categories. For this we designed and built LINQ, one of the apartments from an 
+                                apartment complex that stimulates sustainable and social living. You can read more about
+                                it on <a href='https://teamvirtue.nl/linq/' target='_blank'>VIRTUe's website</a>, if you're interested.<br>
+                                <br>
+                                I was part of the communication sub-team of VIRTUe. I was responsible for all the graphic 
+                                and logo designs, the website and a web interface for the home. Eventually we won <b>2nd 
+                                place</b> for the subcategory Communication, overall winning the <b>6th place</b>. From the very 
+                                beginning I had been involved with this project. Since then I gained a lot of experience 
+                                in working in large team with different backgrounds.<br>
+                                <br>
+                                A new team was recruited and is now competing in the <a href='https://sde21.eu/' target='_blank'>Solar 
+                                Decathlon Europe</a> set in Wuppertal.
+                                </p>
+                            </div>
+                        </section>
+                        
+                        <section class='section-work'>
+                            <div class='visuals-work'>
+                                <h2 id='link4'>Autarco</h2>
+
+                                <h3>Graphic design for a company specialised in solar PV technology</h3>
+
+                                <div class='slideshow'>
+                                    <div class='controls'>
+                                        <label class='checked' for=slider4></label>
+                                        <label for=slider4></label>
+                                    </div>
+
+                                    <div class='overflow'>
+                                        <div class='slider4 inner'>
+                                            <label class='slider4 slide' for=slide1>
+                                                <input checked='checked' type=radio id=slide1 />
+                                                <img src=${ autarcoInfographicImage } alt='image'>
+
+                                                <div class='img-description'>
+                                                    <p>Autarco solar system infographic from brochure</p>
+                                                </div>
+                                            </label>
+
+                                            <label class='slider4 slide' for=slide2>
+                                                <input type=radio id=slide2 />
+                                                <img src=${ autarcoWebsiteImage } alt='image'>
+
+                                                <div class='img-description'>
+                                                    <p>Autarco website</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class='metadata-work'>
+                                    <time>January 2018 - October 2019</time>
+                                    <p>
+                                        Work &#9642; Graphic Design<br>
+                                        <a href='https://autarco.com/' target='_blank'>
+                                            <img src=${ websiteIcon } alt='link icon'> Autarco website
+                                        </a>
+
+                                        <!--<br />
+
+                                        <a href='docs/brochure_autarco.pdf' target='_blank'>
+                                            <img src=require('../img/link_icon.svg') } alt='link icon'> Autarco brochure
                                         </a>-->
                                     </p>
                                 </div>
                             </div>
 
                             <div class='text-work'>
-                                <p>What started as a project from my university's Honors Academy, resulted in an official 
-                                new student team, called VIRTUe. For nearly three years I have worked with a large 
-                                multi-disciplinary team to compete in the Solar Decathlon Middle East 2018 edition (SDME) 
-                                in Dubai. This is an international competition where university teams from all over the 
-                                world designed, operated and built a sustainable home and competed against each other on 
-                                ten sub-categories. For this we designed and built LINQ, one of the apartments from an 
-                                apartment complex that stimulates sustainable and social living. You can read more about
-                                it on VIRTUe's website, if you're interested.<br>
-                                <br>
-                                I was part of the communication sub-team of VIRTUe. I was responsible for all the graphic 
-                                and logo designs, the website and web interface for the home. Eventually we won 2nd 
-                                place for the subcategory Communication. From the very beginning I had been involved 
-                                with this project. Since then I gained a lot of experience in working in large team with 
-                                different backgrounds.
+                                <p>Autarco is a Dutch company located in Eindhoven that deliver complete solar PV (Photovoltaic)
+                                    systems. I started working at Autarco in January 2018 on redesigning the visual identity
+                                    an branding of the company. Based on new branding guidelines me and a colleague had set up,
+                                    we designed several <b>promotion materials</b> related to solar PV technologies.<br/>
+                                    <br />
                                 </p>
                             </div>
                         </section>
                                                 
                         <section class='section-work'>
                             <div class='visuals-work'>
-                                <h2 id='link5'>Aiden</h2>
+                                <h2 id='link3'>Aiden</h2>
 
                                 <h3>Final Bachelor Project</h3>
 
                                 <div class='slideshow'>
                                     <div class='controls'>
-                                        <label class='checked' for=slider5></label>
-                                        <label for=slider5></label>
-                                        <label for=slider5></label>
-                                        <label for=slider5></label>
-                                        <label for=slider5></label>
+                                        <label class='checked' for=slider3></label>
+                                        <label for=slider3></label>
+                                        <label for=slider3></label>
+                                        <label for=slider3></label>
+                                        <label for=slider3></label>
                                     </div>
 
                                     <div class='overflow'>
-                                        <div class='slider5 inner'>
-                                            <label class='slider5 slide' for=slide1>
+                                        <div class='slider3 inner'>
+                                            <label class='slider3 slide' for=slide1>
                                                 <input checked='checked' type=radio id=slide1 />
                                                 <img src=${ aidenHandImage } alt='image'>
 
@@ -347,7 +478,7 @@ const Work = {
                                                 </div>
                                             </label>
 
-                                            <label class='slider5 slide' for=slide2>
+                                            <label class='slider3 slide' for=slide2>
                                                 <input type=radio id=slide2 />
                                                 <img src=${ aidenPhoneMockupImage } alt='image'>
 
@@ -356,7 +487,7 @@ const Work = {
                                                 </div>
                                             </label>
 
-                                            <label class='slider5 slide' for=slide3>
+                                            <label class='slider3 slide' for=slide3>
                                                 <input type=radio id=slide3 />
                                                 <img src=${ aidenMeImage } alt='image'>
 
@@ -365,7 +496,7 @@ const Work = {
                                                 </div>
                                             </label>
 
-                                            <label class='slider5 slide' for=slide4>
+                                            <label class='slider3 slide' for=slide4>
                                                 <input type=radio id=slide4 />
                                                 <img src=${ aidenDemoDayImage } alt='image'>
 
@@ -374,7 +505,7 @@ const Work = {
                                                 </div>
                                             </label>
                                             
-                                            <label class='slider6 slide' for=slide5>
+                                            <label class='slider3 slide' for=slide5>
                                                 <input type=radio id=slide5 />
                                                 <iframe
                                                 src='https://www.youtube-nocookie.com/embed/JGC0jCE_VPY' 
@@ -416,7 +547,7 @@ const Work = {
                             </div>
 
                             <div class='text-work'>
-                                <p>For my final Bachelor project, I researched the distractive effects of smartphones and designed Aiden, a tool that
+                                <p>For my final Bachelor project, I researched the <b>distractive effects of smartphones</b> and designed Aiden, a tool that
                                 aims to reduce these effects.<br>
                                 <br>
                                 Overuse of smartphones can result in a number of different physical and psychological problems. Examples
@@ -424,29 +555,29 @@ const Work = {
                                 such as questionnaires and expert interviews and studying existing methods to reduce phone use I gained
                                 more insight in how to design an effective product. My final design consisted of a physical and digital
                                 component, both using a different approach. Aiden aims to make a phone less distracting by reducing
-                                message notifications and keeping it out of sight whenever possible. A digital assistant is able to act on behalf
+                                message notifications and keeping it out of sight whenever possible. A <b>digital assistant</b> is able to act on behalf
                                 of the user and respond to certain messages for you. For minimal distraction, the phone can be put in a
-                                physical phone dock. The assistant will then be automatically activated.
+                                <b>physical phone dock</b>. The assistant will then be automatically activated.
                                 </p>
                             </div>
                         </section>
                         
                         <section class='section-work'>
                             <div class='visuals-work'>
-                                <h2 id='link4'>Lullabear</h2>
+                                <h2 id='link2'>Lullabear</h2>
                                 <h3>Intelligent bear for soothing sleeping babies</h3>
 
                                 <div class='slideshow'>
                                     <div class='controls'>
-                                        <label class='checked' for=slider4></label>
-                                        <label for=slider4></label>
-                                        <label for=slider4></label>
-                                        <label for=slider4></label>
+                                        <label class='checked' for=slider2></label>
+                                        <label for=slider2></label>
+                                        <label for=slider2></label>
+                                        <label for=slider2></label>
                                     </div>
 
                                     <div class='overflow'>
-                                        <div class='slider4 inner'>
-                                            <label class='slider4 slide' for=slide1>
+                                        <div class='slider2 inner'>
+                                            <label class='slider2 slide' for=slide1>
                                                 <input checked='checked' type=radio name=slider id=slide1 />
                                                 <img src=${ iipBear2Image } alt='image'>
 
@@ -464,7 +595,7 @@ const Work = {
                                                 </div>
                                             </label>-->
                                             
-                                            <label class='slider4 slide' for=slide2>
+                                            <label class='slider2 slide' for=slide2>
                                                 <input type=radio name=slider id=slide2 />
                                                 <img src=${ iipElectronicsImage } alt='image'>
 
@@ -473,7 +604,7 @@ const Work = {
                                                 </div>
                                             </label>
                                             
-                                            <label class='slider4 slide' for=slide3>
+                                            <label class='slider2 slide' for=slide3>
                                                 <input type=radio name=slider id=slide3 />
                                                 <img src=${ iipInterfaceImage } alt='image'>
 
@@ -482,7 +613,7 @@ const Work = {
                                                 </div>
                                             </label>
                                             
-                                            <label class='slider4 slide' for=slide4>
+                                            <label class='slider2 slide' for=slide4>
                                                 <input type=radio name=slider id=slide4 />
                                                 <img src=${ iipBear1Image } alt='image'>
 
@@ -508,30 +639,30 @@ const Work = {
                             <div class='text-work'>
                                 <p>During a eight-week course called Interactive Intelligent Products I worked together 
                                 with a group and created a prototype called the Lullabear. The Lullabear uses a 
-                                supervised machine learning algorithm to identify different emotional states of a baby. 
+                                <b>supervised machine learning algorithm</b> to identify different emotional states of a baby. 
                                 It can then take preemptive actions to soothe the baby back to sleep, hence reducing the 
                                 need of parent interventions. Thus it attempts to provide both the baby and the parents 
-                                with a less disrupted sleep. The product is a combination of hardware modules inside a 
+                                with a <b>less disrupted sleep</b>. The product is a combination of hardware modules inside a 
                                 teddy bear that together evaluate the baby’s sleep, take actions to soothe the baby and 
-                                display the monitored information to an interface.
+                                display the monitored information to an interface. 
                                 </p>
                             </div>
                         </section>
 
                         <section class='section-work'>
                             <div class='visuals-work'>
-                                <h2 id='link3'>Radiomenta</h2>
+                                <h2 id='link1'>Radiomenta</h2>
                                 <h3>Music player for elderly with dementia</h3>
 
                                 <div class='slideshow'>
                                     <div class='controls'>
-                                        <label class='checked' for=slider3></label>
-                                        <label for=slider3></label>
+                                        <label class='checked' for=slider1></label>
+                                        <label for=slider1></label>
                                     </div>
 
                                     <div class='overflow'>
-                                        <div class='slider3 inner'>
-                                            <label class='slider3 slide' for=slide1>
+                                        <div class='slider1 inner'>
+                                            <label class='slider1 slide' for=slide1>
                                                 <input checked='checked' type=radio name=slider id=slide2 />
                                                 <img src=${ radiomentaImage } alt='image'>
                                                 <!--<img src='/src/img/radiomenta.JPG' alt='image'>-->
@@ -541,7 +672,7 @@ const Work = {
                                                 </div>
                                             </label>
 
-                                            <label class='slider3 slide' for=slide1>
+                                            <label class='slider1 slide' for=slide1>
                                                 <input type=radio name=slider id=slide2 />
                                                 <video width='100%' controls>
                                                     <source src=${ radiomentaVideo } type='video/mp4'>
@@ -560,7 +691,7 @@ const Work = {
                                 <div class='metadata-work'>
                                     <time>February 2016 - June 2016</time>
                                     <p>
-                                        Research Project &#9642; Social Inclusion<br>
+                                        Research Project &#9642; Social Inclusion &#9642; Animation<br>
                                         <a href='https://www.vitalisgroep.nl/' target='_blank'>
                                             <img src=${ clientIcon } alt='client icon'> Vitalis
                                         </a>
@@ -573,123 +704,17 @@ const Work = {
                                 deal caused by the disease itself, which, together with memory loss, leads to the feeling 
                                 of loss of control and personal identity. This loss of independency can lead to problems 
                                 such as anxiety, depression and even aggression. <br>
-                                <br>The outcome of the research project in my second year proposes a suggestion for solving 
+                                <br>The outcome of the <b>research project</b> in my second year proposes a suggestion for solving 
                                 this issue. By first testing which visual and auditory stimuli elderly are familiar with, 
-                                this new knowledge was implemented into a conceptual product. The idea is a product that 
-                                looks like an old radio and plays personalised music when the buttons are dialed 
-                                by an elderly and their fingerprints are recognised. So without help from caretaker they 
-                                are able to play their favourite music. Consequently, a new way of gaining some feeling of 
-                                social inclusion and positively affect the well-being is created.
+                                this new knowledge was translated to a <b>conceptual product</b>. The idea of this concept 
+                                is a music player that looks similar to an old radio. It can play <b>personalised music</b> 
+                                by using fingerprint recognition when dialing the buttons So without help from caretaker 
+                                they are able to play their favourite music. Consequently, a new way of gaining feelings 
+                                of independence and positively affect the well-being is created.
                                 </p>
                             </div>
                         </section>
-
-                        <section class='section-work'>
-                            <div class='visuals-work'>
-                                <h2 id='link2'>Dash</h2>
-                                <h3>Autonomous car interface</h3>
-
-                                <div class='slideshow'>
-                                    <div class='controls'>
-                                        <label class='checked' for=slider2></label>
-                                        <label for=slider2></label>
-                                    </div>
-
-                                    <div class='overflow'>
-                                        <div class='slider2 inner'>
-                                            <label class='slider2 slide' for=slide1>
-                                                <input checked='checked' type=radio name=slider id=slide1 />
-                                                <img src=${ dashImage } alt='image'>
-                                                <!--<img src='/src/img/dash.jpg' alt='image'>-->
-
-                                                <div class='img-description'>
-                                                    <p>Dash prototype</p>
-                                                </div>
-                                            </label>
-
-                                            <label class='slider2 slide' for=slide2>
-                                                <input type=radio name=slider id=slide2 />
-                                                <img src=${ dashSketchImage } alt='image'>
-
-                                                <div class='img-description'>
-                                                    <p>Dash sketches</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class='metadata-work'>
-                                    <time>September 2015 - January 2016</time>
-                                    <p>
-                                        Design Project &#9642; Human-centred Design &#9642; Self-driving Cars<br>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class='text-work'>
-                                <p>Dash is a physical object that translates the actions of the car into movements that 
-                                everyone understands: it simulates a person driving. It is placed on the dashboard and 
-                                its head is transparent, so everyone in the car can see how it is moving. When the car 
-                                is autonomously driving, you can still give input using the normal controls in case you 
-                                disagree with the actions of the car. Using lights and sound Dash will show you if the 
-                                car is reacting to your input or not.
-                                </p>
-                            </div>
-                        </section>
-
-                        <section class='section-work'>
-                            <div class='visuals-work'>
-                                <h2 id='link1'>NavCap</h2>
-                                <h3>Navigating knitted hat using haptic feedback</h3>
-                                
-                                <div class='slideshow'>
-                                    <div class='controls'>
-                                        <label class='checked' for=slider1></label>
-                                        <label for=slider1></label>
-                                    </div>
-
-                                    <div class='overflow'>
-                                        <div class='slider1 inner'>
-                                            <label class='slider1 slide' for=slide1>
-                                                <input checked='checked' type=radio name=slider id=slide1 />
-                                                <img src=${ navCapImage } alt='image'>
-
-                                                <div class='img-description'>
-                                                    <p>NavCap hat prototype</p>
-                                                </div>
-                                            </label>
-
-                                            <label class='slider1 slide' for=slide2>
-                                                <input type=radio name=slider id=slide2 />
-                                                <img src=${ navCapMeImage } alt='image'>
-
-                                                <div class='img-description'>
-                                                    <p>Programming in the Arduino environment</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class='metadata-work'>
-                                    <time>September 2014 - January 2015</time>
-                                    <p>
-                                        Design Project &#9642; Wearables<br>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class='text-work'>
-                                <p>In my first Bachelor semester, I have worked on a group project in the Wearables 
-                                theme. Together we designed the NavCap. The NavCap is a knitted hat that can be worn 
-                                during winter time. In the band of the hat are tiny vibration motors that guide the 
-                                user. It is connected via Bluetooth to the user's smartphone for GPS.<br>
-                                </p>
-                            </div>
-                        </section>
-
-
+                        
                         <footer-element></footer-element>
                     </div>
                 </div>
@@ -719,7 +744,7 @@ const Work = {
 
         document.querySelectorAll('.controls label').forEach((element) => {
             element.addEventListener('click', (event) => {
-                let index = DOM.DOM(event.currentTarget).index() + 1, // TODO: fix DOM.DOM names?
+                const index = DOM.DOM(event.currentTarget).index() + 1, // TODO: fix DOM.DOM names?
                     // let index = $(event.currentTarget).index() + 1,
                     // event.currentTarget.getAttribute('data-type').split('_'),
                     slider = event.currentTarget.getAttribute('for'),

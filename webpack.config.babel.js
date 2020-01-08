@@ -58,7 +58,7 @@ export default (env, options) => {
                     use: {
                         loader: 'file-loader',
                         options: {
-                            name: 'assets/[hash]-[name].[ext]',
+                            name: 'assets/video/[hash]-[name].[ext]',
                         }
                     }
                 },

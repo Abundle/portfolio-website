@@ -2,19 +2,20 @@
 // import '@webcomponents/webcomponentsjs/webcomponents-loader';
 
 // TODO: use await import?
-// Local import
+// Pages
 import Home from './pages/Home';
 import Work from './pages/Work';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import Item from './pages/Item';
-import items from './pages/gallery/items';
 import Error404 from './pages/Error404';
 
-import Utils from './Utils.js';
-import { intervalGallery, intervalCarousel } from './PageAnimations';
-import * as DOM from './DOMFunctions';
+// Local import
+import items from './utils/items';
+import Utils from './utils/Utils.js';
+import { intervalGallery, intervalCarousel } from './utils/PageAnimations';
+import * as DOM from './utils/DOMFunctions';
 
 import '../scss/main.scss';
 
@@ -50,12 +51,12 @@ let isAnimating = false,
     newLocation,
     firstLoad = false;
 
-    //animationEnd = 'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
-    // transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd transitioned',
-    // $root = $('html, body');
+//animationEnd = 'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
+// transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd transitioned',
+// $root = $('html, body');
 
 // Router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
-const router = async () => {};
+// const router = async () => {};
 
 // TODO: Check async variable
 //  + Check https://www.ynonperek.com/2017/08/24/vanilla-single-page-router-architecture/
@@ -66,12 +67,12 @@ const router = async () => {};
 //  + Check https://webassembly.org
 //  + Check AMP & https://hover-pointer-media-query.glitch.me & SEO (see mail)
 
-let loadContent = async (url, bool, type) => {
+const loadContent = async (url, bool, type) => {
     // Lazy load view element:
-    let content = null || document.getElementById('main');
+    const content = null || document.getElementById('main');
     let delay = 800; //600
 
-    let request = Utils.parseRequestURL(url);
+    const request = Utils.parseRequestURL(url);
     let parsedURL = (request.resource ? '/' + request.resource : '/');
     let page;
 
@@ -308,7 +309,7 @@ let loadContent = async (url, bool, type) => {
     }
 };
 
-let changePage = (url, bool, type) => {
+const changePage = (url, bool, type) => {
     let delay = 0;
 
     isAnimating = true;
@@ -412,7 +413,7 @@ let changePage = (url, bool, type) => {
             newLocation = url;*/
         }, 750);
         break;
-        case 'gallery-stack':
+    case 'gallery-stack':
         // unique case; if the window is smaller than 1200px and larger than 900px, the article should
         /*if (window.matchMedia('(max-width: 1200px)').matches && window.matchMedia('(min-width: 900px)').matches ) {
             // The viewport is less than, or equal to, 1200 pixels wide
@@ -575,11 +576,11 @@ let changePage = (url, bool, type) => {
     }
 };
 
-export let pageTrigger = (event) => {
+export const pageTrigger = (event) => {
     event.preventDefault();
 
     // detect which page has been selected
-    let newPage = event.currentTarget.getAttribute('href'),
+    const newPage = event.currentTarget.getAttribute('href'),
         index = event.currentTarget.getAttribute('data-type').split('_'),
         elements = document.querySelectorAll('.menu-box' + index[1] + ', .mobile-canvas'),
         type = index[0],
@@ -622,24 +623,11 @@ export let pageTrigger = (event) => {
     firstLoad = true;
 };
 
-
-/*$('.welcome-canvas').hide();
-$('.welcome-message').hide();*/
-
-// let content = null || document.getElementById('main');
-
-// Listen on hash change?
-/*window.addEventListener('hashchange', () => {
-    console.log('hash');
-});*/
-
 // Listen on page load:
 window.addEventListener('load', (event) => {
     // console.log(window.location.pathname);
     // TODO: Check location.pathname variable & .then function
-    loadContent(location.pathname, true, 'load').then((test) => {
-        // console.log(event);
-    });
+    loadContent(location.pathname, true, 'load');
 
 
     /*loadContent(url, bool, type);
@@ -667,81 +655,3 @@ window.addEventListener('popstate', (event) => { // TODO: Reimplement this funct
 
     // console.log(event, location.pathname);
 });
-
-/*document.addEventListener('DOMContentLoaded', (event) => {
-    // console.log(event);
-
-    loadContent(location.pathname, true, 'load').then((test) => {
-        // console.log(test);
-
-        document.querySelector('.menu-container').addEventListener('click', () => {
-            DOM.select('.mobile-overlay').toggleClass('active');
-        });
-    });
-
-});*/
-
-/*
-window.onpopstate = (event) => {
-    firstLoad = true; // TODO: Check this variable, does not seem right
-
-    console.log(event.state);
-
-    if (firstLoad) {
-        // Safari emits a popstate event on page load - check if firstLoad is true
-        // before animating if it's false - the page has just been loaded
-        //let currentPage = window.location.pathname.split('/').pop(),
-        let currentPage = newLocation, //window.location.href
-            //newPageArray = window.location.pathname.split('/'),
-            // this is the url of the page to be loaded
-            //newPage = newPageArray[newPageArray.length - 1];
-            newPage = window.location.pathname.split('/').pop();
-
-        console.log(newPage + ' ' + currentPage);
-
-        if (!isAnimating && newPage !== currentPage) { // newLocation !== newPage, not always the case?
-
-            if (currentPage === 'index.html') {
-
-                if (newPage === 'work.html' || newPage === 'about.html' || newPage === 'contact.html') {
-                    console.log('stack');
-                    changePage(newPage, false, 'stack');
-                } else if (newPage === 'gallery.html') {
-                    console.log('gallery-stack');
-                    changePage(newPage, false, 'gallery-stack');
-                } else {
-                    console.log('popstate error 1');
-                }
-            } else if (currentPage === 'work.html' || currentPage === 'about.html' || currentPage === 'contact.html') {
-                if (newPage === 'work.html' || newPage === 'about.html' || newPage === 'contact.html') {
-                    console.log('replace');
-                    changePage(newPage, false, 'replace');
-                } else if (newPage === 'index.html') {
-                    console.log('exit');
-                    changePage(newPage, false, 'exit');
-                } else {
-                    console.log('popstate error 2');
-                    changePage(newPage, false, 'hello');
-                }
-            } else if (currentPage === 'gallery.html' || currentPage === '../gallery.html') {
-                if (newPage === 'index.html') {
-                    console.log('gallery-exit');
-                    changePage(newPage, false, 'gallery-exit');
-                } else if (newPage.includes('_')) {
-                    console.log('image-detail');
-                    changePage(newPage, false, 'image-detail');
-                } else {
-                    console.log('popstate error 3');
-                }
-            } else if (currentPage !== undefined && newPage === 'gallery.html') {
-                console.log('go-back', currentPage);
-                changePage(newPage, false, 'back');
-            } else { // work/about/contact to gallery scenario
-                console.log('popstate transition does not exist, trigger instant page change');
-                changePage(newPage, false, 'hello');
-            }
-        }
-    }
-    firstLoad = true;
-    //});
-};*/

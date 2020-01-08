@@ -22,7 +22,7 @@ class MobileMenu extends HTMLElement {
     connectedCallback() {
         let page = this.getAttribute('page');
 
-        this.innerHTML = /*language=HTML*/ `
+        this.innerHTML = `
             <div class='menu-bar'>
                 <input id='slide-sidebar' type='checkbox' role='button' />
 
