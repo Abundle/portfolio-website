@@ -50,9 +50,9 @@ const Contact = {
                         <div class='section-contact'>
                             <div class='text-contact'>
                                 <p>
-                                Currently I am studying for a Master's degree in Computing Science at Utrecht University.
-                                In my free time I like to work on pet projects, such as 
-                                <a href='https://sandbox.aidanbundel.com/' target='_blank'>this one</a>.<br>
+                                Currently I am studying for a Master's degree in Computing Science at <a href='https://www.uu.nl/en' target='_blank'>Utrecht University</a>
+                                and working as a Junior Test Engineer at <a href='https://www.geodan.nl/' target='_blank'>Geodan</a>. In my free time I like to work on pet 
+                                projects, such as <a href='https://sandbox.aidanbundel.com/' target='_blank'>this one</a>.<br>
                                 <br>
                                 If you&#39;d like to get in touch to talk about work related stuff, any other stuff
                                 or just say hi, no need to hesitate. I&#39;ll be waiting, patiently.<br>

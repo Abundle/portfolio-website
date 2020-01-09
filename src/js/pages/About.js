@@ -74,10 +74,14 @@ const About = {
                         <div class='text-about'>
                             <p>My name is <b>Aidan Bundel</b> and I love <button id='carousel-button'></button>.<br>                          
                             <br>
-                            I graduated in 2018 from Eindhoven University of Technology (TU/e) with a Bachelor degree 
-                            in <b>Industrial Design</b> in the Netherlands. I became quite passionate about digital
-                            design: graphic design, animating, web design and (web) programming. <br>
-                            Currently I am studying for a Master's degree in <b>Computing Science</b> at Utrecht University.<br>
+                            I graduated in 2018 from <a href='https://www.tue.nl/en/' target='_blank'>Eindhoven 
+                            University of Technology</a> (TU/e) with a Bachelor degree in <b>Industrial Design</b> in 
+                            the Netherlands. I became quite passionate about digital design: graphic design, animating, 
+                            web design and (web) programming. <br> 
+                            Currently I am studying for a Master's degree in <b>Computing Science</b> at 
+                            <a href='https://www.uu.nl/en' target='_blank'>Utrecht University</a>.
+                            Besides my studies, I work as a Junior Test Engineer at a Geo-ICT company called
+                            <a href='https://www.geodan.com/' target='_blank'>Geodan</a>.<br>
                             <br>
                             I grew up in a small village near Amsterdam. Not many people are familiar with this tiny
                             paradise called Landsmeer, therefore it's okay to say I am from Amsterdam.<br>

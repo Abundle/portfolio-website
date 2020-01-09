@@ -20,6 +20,7 @@ import fruitPunchWebsiteImage from '../../assets/img/fruitpunch_website.jpg';
 import fruitPunchTshirtImage from '../../assets/img/fruitpunch_tshirt.jpg';
 import autarcoInfographicImage from '../../assets/img/autarco_infographic.jpg';
 import autarcoWebsiteImage from '../../assets/img/autarco_website.jpg';
+import autarcoFlyerImage from '../../assets/img/autarco_partner_brochure.jpg';
 import linqSideImage from '../../assets/img/linq_side.jpg';
 import webAppImage from '../../assets/img/web_app.jpg';
 import webAppInterfaceImage from '../../assets/img/virtue_webapp_interface.png';
@@ -400,6 +401,7 @@ const Work = {
                                     <div class='controls'>
                                         <label class='checked' for=slider4></label>
                                         <label for=slider4></label>
+                                        <label for=slider4></label>
                                     </div>
 
                                     <div class='overflow'>
@@ -419,6 +421,15 @@ const Work = {
 
                                                 <div class='img-description'>
                                                     <p>Autarco website</p>
+                                                </div>
+                                            </label>
+                                            
+                                            <label class='slider4 slide' for=slide3>
+                                                <input type=radio id=slide3 />
+                                                <img src=${ autarcoFlyerImage } alt='image'>
+
+                                                <div class='img-description'>
+                                                    <p>Autarco flyer</p>
                                                 </div>
                                             </label>
                                         </div>
@@ -446,7 +457,8 @@ const Work = {
                                 <p>Autarco is a Dutch company located in Eindhoven that deliver complete solar PV (Photovoltaic)
                                     systems. I started working at Autarco in January 2018 on redesigning the visual identity
                                     an branding of the company. Based on new branding guidelines me and a colleague had set up,
-                                    we designed several <b>promotion materials</b> related to solar PV technologies.<br/>
+                                    we designed several <b>promotion materials</b> related to solar PV technologies, such as
+                                    brochures and datasheets.<br/>
                                     <br />
                                 </p>
                             </div>
@@ -528,7 +540,7 @@ const Work = {
                                         Final Bachelor Project &#9642; Interaction Design &#9642; Personal Assistent<br>
 
                                         <a href='https://www.hervitas.nl/' target='_blank'>
-                                            <img src=${ clientIcon } alt='client icon'> Hervitas
+                                            <img src=${ clientIcon } alt='client icon'> Client: Hervitas
                                         </a>
 
                                         </br>
@@ -693,7 +705,7 @@ const Work = {
                                     <p>
                                         Research Project &#9642; Social Inclusion &#9642; Animation<br>
                                         <a href='https://www.vitalisgroep.nl/' target='_blank'>
-                                            <img src=${ clientIcon } alt='client icon'> Vitalis
+                                            <img src=${ clientIcon } alt='client icon'> Client: Vitalis
                                         </a>
                                     </p>
                                 </div>
