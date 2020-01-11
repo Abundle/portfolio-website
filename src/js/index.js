@@ -1,7 +1,6 @@
 // Load webcomponents loader, which includes all the necessary polyfills
 // import '@webcomponents/webcomponentsjs/webcomponents-loader';
 
-// TODO: use await import?
 // Pages
 import Home from './pages/Home';
 import Work from './pages/Work';
@@ -20,12 +19,7 @@ import * as DOM from './utils/DOMFunctions';
 import '../scss/main.scss';
 
 // TODO: also make the website work without JavaScript?
-// TODO: create type='module' javascript tag in index.html + Dev-server with ES6 JavaScript?
-//  + Check DRY & .babelrc
-//  + Check lazy-loading images (https://www.sitepoint.com/five-techniques-lazy-load-images-website-performance/)
-//  + Check https://stackoverflow.com/questions/52922150/disable-in-chrome-active-resource-loading-per-frame-limit
-// TODO: create type='module' javascript tag in index.html
-// TODO: Use Modernizr?
+// TODO: lazy load images
 // TODO: Re-implement Google Maps
 // TODO: Test site with Google Lighthouse
 // TODO: Use custom enum or object for switch cases + use enums for boolean
@@ -47,9 +41,9 @@ const routes = {
 };
 // const transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
 
-let isAnimating = false,
-    newLocation,
-    firstLoad = false;
+let isAnimating = false;
+/*newLocation,
+firstLoad = false;*/
 
 //animationEnd = 'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
 // transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd transitioned',
@@ -64,12 +58,10 @@ let isAnimating = false,
 //  & https://medium.freecodecamp.org/do-we-still-need-javascript-frameworks-42576735949b
 //  When navigating from Gallery to Home again and then press work/about/contact, the pseudo boxes appear too quickly
 //  and page animation in general is too fast.
-//  + Check https://webassembly.org
-//  + Check AMP & https://hover-pointer-media-query.glitch.me & SEO (see mail)
 
 const loadContent = async (url, bool, type) => {
     // Lazy load view element:
-    const content = null || document.getElementById('main');
+    const content = document.getElementById('main');
     let delay = 800; //600
 
     const request = Utils.parseRequestURL(url);

@@ -11,6 +11,7 @@ import '../components/Exit';
 // Icons
 import websiteIcon from '../../assets/img/website_icon.svg';
 import clientIcon from '../../assets/img/client_icon.svg';
+import linkIcon from '../../assets/img/link_icon.svg';
 
 // Images
 import fruitPunchLogoImage from '../../assets/img/fruitpunch_corporate_identity.jpg';
@@ -33,6 +34,8 @@ import aidenHandImage from '../../assets/img/aiden_hand.jpg'
 import aidenPhoneMockupImage from '../../assets/img/aiden_phone_mockup.jpg'
 import aidenMeImage from '../../assets/img/aiden_me.jpg';
 import aidenDemoDayImage from '../../assets/img/aiden_demo_day.jpg';
+import aidenConceptUI1Image from '../../assets/img/aiden_concept_ui.jpg';
+import aidenConceptUI2Image from '../../assets/img/aiden_concept_ui.png';
 import iipBear2Image from '../../assets/img/iip_bear2.jpg';
 import iipElectronicsImage from '../../assets/img/iip_electronics.jpg';
 import iipInterfaceImage from '../../assets/img/iip_interface.jpg';
@@ -42,14 +45,15 @@ import radiomentaImage from '../../assets/img/radiomenta.jpg';
 // Video
 import radiomentaVideo from '../../assets/video/radiomenta_video.mp4';
 
+// Docs
+import aidenPoster from '../../assets/docs/aiden_poster.pdf';
+
 // Without this line, CSSPlugin and AttrPlugin may get dropped by your bundler...
 gsap.registerPlugin(CSSPlugin);
 gsap.registerPlugin(ScrollToPlugin);
 
-// TODO: Upload all videos to YouTube?
 // TODO: Check <time> tags usage etc.
 // TODO: Stop videos automatically when you navigate the slider
-// TODO: Work VIRTUe video editen met logo intro + VIRTUe crowdfunding flyer & web app link & foto met mij en jordy erop
 
 const menuClick = () => {
     const elements = document.querySelectorAll('li');
@@ -477,6 +481,7 @@ const Work = {
                                         <label for=slider3></label>
                                         <label for=slider3></label>
                                         <label for=slider3></label>
+                                        <label for=slider3></label>
                                     </div>
 
                                     <div class='overflow'>
@@ -519,15 +524,19 @@ const Work = {
                                             
                                             <label class='slider3 slide' for=slide5>
                                                 <input type=radio id=slide5 />
-                                                <iframe
-                                                src='https://www.youtube-nocookie.com/embed/JGC0jCE_VPY' 
-                                                frameborder='0'
-                                                allow='encrypted-media;' 
-                                                allowfullscreen>     
-                                                </iframe>
+                                                <img src=${ aidenConceptUI2Image } alt='image'>
 
                                                 <div class='img-description'>
-                                                    <p>Concept video</p>
+                                                    <p>Aiden concept UI: assistant enabled in chats</p>
+                                                </div>
+                                            </label>
+                                            
+                                            <label class='slider3 slide' for=slide6>
+                                                <input type=radio id=slide6 />
+                                                <img src=${ aidenConceptUI1Image } alt='image'>
+
+                                                <div class='img-description'>
+                                                    <p>Aiden concept UI: assistant summary</p>
                                                 </div>
                                             </label>
                                         </div>
@@ -548,12 +557,12 @@ const Work = {
                                         <a href='http://aiden.aidanbundel.com/' target='_blank'>
                                             <img src=${ websiteIcon } alt='link icon'> Aiden assistant demo
                                         </a>
+                                        
+                                        <br/>
 
-                                        <!--<br/>
-
-                                        <a href='docs/report_aiden.pdf' target='_blank'>
-                                            <img src='/src/img/link_icon.svg' alt='link icon'> Report
-                                        </a>-->
+                                        <a href=${ aidenPoster } target='_blank'>
+                                            <img src=${ linkIcon } alt='link icon'> Aiden infographic poster
+                                        </a>
                                     </p>
                                 </div>
                             </div>
@@ -569,7 +578,9 @@ const Work = {
                                 component, both using a different approach. Aiden aims to make a phone less distracting by reducing
                                 message notifications and keeping it out of sight whenever possible. A <b>digital assistant</b> is able to act on behalf
                                 of the user and respond to certain messages for you. For minimal distraction, the phone can be put in a
-                                <b>physical phone dock</b>. The assistant will then be automatically activated.
+                                <b>physical phone dock</b>. The assistant will then be automatically activated. This 
+                                project also posed interesting questions such as: how much control are we willing to give
+                                away to AI? How much data are we willing to share?
                                 </p>
                             </div>
                         </section>

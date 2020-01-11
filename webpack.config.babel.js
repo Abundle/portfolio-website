@@ -9,8 +9,6 @@ import TerserPlugin from 'terser-webpack-plugin';
 
 // Name 'webpack.config.babel.js' is for using ES6 in webpack config
 
-// TODO: Check fonts inclusion
-
 export default (env, options) => {
     const devMode = options.mode !== 'production';
 
@@ -44,7 +42,7 @@ export default (env, options) => {
                         { loader: 'sass-loader' }
                     ],
                 },
-                {
+                { // TODO: Check fonts inclusion
                     test: /\.(jpe?g|png|gif|svg|ico)$/,
                     use: {
                         loader: 'file-loader',
@@ -58,7 +56,16 @@ export default (env, options) => {
                     use: {
                         loader: 'file-loader',
                         options: {
-                            name: 'assets/video/[hash]-[name].[ext]',
+                            name: devMode ? 'assets/video/[name].[ext]' : 'assets/video/[hash].[ext]',
+                        }
+                    }
+                },
+                {
+                    test: /\.(pdf)$/,
+                    use: {
+                        loader: 'file-loader',
+                        options: {
+                            name: devMode ? 'assets/docs/[name].[ext]' : 'assets/docs/[hash].[ext]',
                         }
                     }
                 },
