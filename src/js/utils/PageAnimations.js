@@ -1,6 +1,5 @@
 import * as DOM from './DOMFunctions';
-import { TweenMax, CSSPlugin, gsap } from 'gsap/all';
-// import { TweenMax } from 'gsap/all';
+import { CSSPlugin, gsap } from 'gsap/all';
 
 // Without this line, CSSPlugin and AttrPlugin may get dropped by your bundler...
 gsap.registerPlugin(CSSPlugin);
@@ -23,27 +22,33 @@ export const scrollMenu = () => {  // TODO: rewrite function using Observer API
         duration = 0.1;
 
     if (window.scrollY > 0 && window.scrollY < headerSix) {
-        TweenMax.to(element, duration, {
+        gsap.to(element, {
+            duration: duration,
             top: menuBoxCenterY
         });
     } else if (window.scrollY > headerSix && window.scrollY < headerFive) {
-        TweenMax.to(element, duration, {
+        gsap.to(element, {
+            duration: duration,
             top: menuBoxCenterY - listElementHeight
         });
     } else if (window.scrollY > headerFive && window.scrollY < headerFour) {
-        TweenMax.to(element, duration, {
+        gsap.to(element, {
+            duration: duration,
             top: menuBoxCenterY - (listElementHeight * 2)
         });
     } else if (window.scrollY > headerFour && window.scrollY < headerThree) {
-        TweenMax.to(element, duration, {
+        gsap.to(element, {
+            duration: duration,
             top: menuBoxCenterY - (listElementHeight * 3)
         });
     } else if (window.scrollY > headerThree && window.scrollY < headerTwo) {
-        TweenMax.to(element, duration, {
+        gsap.to(element, {
+            duration: duration,
             top: menuBoxCenterY - (listElementHeight * 4)
         });
     } else if (window.scrollY > headerTwo && window.scrollY < headerOne) {
-        TweenMax.to(element, duration, {
+        gsap.to(element, {
+            duration: duration,
             top: menuBoxCenterY - (listElementHeight * 5)
         });
     }

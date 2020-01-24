@@ -41,9 +41,9 @@ const routes = {
 };
 // const transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
 
-let isAnimating = false;
-/*newLocation,
-firstLoad = false;*/
+let isAnimating = false,
+    newLocation,
+    firstLoad = false;
 
 //animationEnd = 'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
 // transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd transitioned',

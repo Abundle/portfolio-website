@@ -1,9 +1,7 @@
 import { scrollMenu } from '../utils/PageAnimations';
 import { pageTrigger } from '../index';
 import * as DOM from '../utils/DOMFunctions';
-import {TweenMax, CSSPlugin, ScrollToPlugin, gsap} from 'gsap/all';
-// import { TweenMax } from 'gsap/all';
-// import { TweenMax } from 'gsap/TweenMaxBase';
+import { CSSPlugin, ScrollToPlugin, gsap } from 'gsap/all';
 
 // Custom elements
 import '../components/Exit';
@@ -43,14 +41,14 @@ import iipBear1Image from '../../assets/img/iip_bear1.jpg';
 import radiomentaImage from '../../assets/img/radiomenta.jpg';
 
 // Video
+import virtueLogoVideo from '../../assets/video/virtue_logo_video.mp4';
 import radiomentaVideo from '../../assets/video/radiomenta_video.mp4';
 
 // Docs
 import aidenPoster from '../../assets/docs/aiden_poster.pdf';
 
 // Without this line, CSSPlugin and AttrPlugin may get dropped by your bundler...
-gsap.registerPlugin(CSSPlugin);
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(CSSPlugin, ScrollToPlugin);
 
 // TODO: Check <time> tags usage etc.
 // TODO: Stop videos automatically when you navigate the slider
@@ -83,7 +81,8 @@ const menuClick = () => {
             }, 400);*/
 
             window.setTimeout(() => {
-                TweenMax.to(document.querySelector('.sub-menu-container'), 0.1, {
+                gsap.to(document.querySelector('.sub-menu-container'), {
+                    duration: 0.1,
                     top: menuBoxCenterY - (listElementHeight * index),
                 });
             }, 400);
@@ -222,11 +221,12 @@ const Work = {
                             </div>
 
                             <div class='text-work'>
-                                <p>FruitPunch AI is a relatively new <a href='https://www.tue.nl/en/tue-campus/meeting-working-together/student-teams/' target='_blank'>
-                                student team</a> at Eindhoven University of Technology.
-                                The aim to educate people by presenting them with cutting-edge technology of applied AI 
-                                through masterclasses, weekly AI Code sessions and an AI-esports competition to apply AI 
-                                for Good. This platform of sharing knowledge further contributes to the university education.<br>
+                                <p>FruitPunch AI is a non-profit and open source organization, run by students, 
+                                in collaboration with including but not limited to Eindhoven University of Technology, Eindhoven AI Systems 
+                                Institute, IBM and High Tech Plaza. The aim to educate people by presenting them with 
+                                cutting-edge technology of applied AI through masterclasses, weekly AI Code sessions and 
+                                an AI E-sports competition to apply AI for Good. This platform of sharing knowledge 
+                                further contributes to the university education.<br>
                                 <br>
                                 For the team redesigned the <b>logo</b> and set up the basis for the <b>branding</b>. 
                                 Currently my work is focused on creating <b>promotional material</b> for events and workshops. 
@@ -281,13 +281,16 @@ const Work = {
                                                     <p>Web app interface concept</p>
                                                 </div>
                                             </label>
-
+                                            
                                             <label class='slider5 slide' for=slide4>
-                                                <input type=radio id=slide4 />
-                                                <img src=${ sdmeTeamImage } alt='image'>
+                                                <input type=radio name=slider id=slide4 />
+                                                <video width='100%' controls>
+                                                    <source src=${ virtueLogoVideo } type='video/mp4'>
+                                                    Your browser does not support the video tag.
+                                                </video>
 
                                                 <div class='img-description'>
-                                                    <p>This is how I look while cheering</p>
+                                                    <p>Logo intro animation</p>
                                                 </div>
                                             </label>
                                             
@@ -375,7 +378,8 @@ const Work = {
 
                             <div class='text-work'>
                                 <p>What started as a project from my university's <b>Honors Academy</b>, resulted in an official 
-                                new student team, called VIRTUe. For three years I have worked with a large 
+                                new <a href='https://www.tue.nl/en/tue-campus/meeting-working-together/student-teams/' target='_blank'>
+                                student team</a>, called VIRTUe. For three years I have worked with a large 
                                 multi-disciplinary team to compete in the <b>Solar Decathlon Middle East 2018 edition (SDME)</b> 
                                 in Dubai. This is an international competition where 16 university teams from all over the 
                                 world designed, operated and built a sustainable home and competed against each other on 
@@ -727,13 +731,14 @@ const Work = {
                                 deal caused by the disease itself, which, together with memory loss, leads to the feeling 
                                 of loss of control and personal identity. This loss of independency can lead to problems 
                                 such as anxiety, depression and even aggression. <br>
-                                <br>The outcome of the <b>research project</b> in my second year proposes a suggestion for solving 
-                                this issue. By first testing which visual and auditory stimuli elderly are familiar with, 
-                                this new knowledge was translated to a <b>conceptual product</b>. The idea of this concept 
-                                is a music player that looks similar to an old radio. It can play <b>personalised music</b> 
-                                by using fingerprint recognition when dialing the buttons So without help from caretaker 
-                                they are able to play their favourite music. Consequently, a new way of gaining feelings 
-                                of independence and positively affect the well-being is created.
+                                <br>The outcome of this <b>research project</b> with a group in my second year proposes 
+                                a sugristgestion for solving this issue. By first testing which visual and auditory stimuli 
+                                elderly are familiar with, this new knowledge was translated to a <b>conceptual product</b>. 
+                                The idea of this concept is a music player that looks similar to an old radio. It can 
+                                play <b>personalised music</b> by using fingerprint recognition when dialing the buttons 
+                                So without help from caretaker they are able to play their favourite music. 
+                                Consequently, a new way of gaining feelings of independence and positively affect the 
+                                well-being is created.
                                 </p>
                             </div>
                         </section>
@@ -781,7 +786,8 @@ const Work = {
 
                 // TweenMax.to(document.querySelector('.text-work'), 1, {css:{top:'100px', backgroundColor:'#ff0000', fontSize:'12px'}, delay:0.5});
 
-                TweenMax.to(document.querySelector('.' + slider + '.inner'), 0.5, {
+                gsap.to(document.querySelector('.' + slider + '.inner'), {
+                    duration: 0.5,
                     y: -slidesHeight * index + slidesHeight,
                 });
 
@@ -848,14 +854,16 @@ const Work = {
 
                 // TweenMax.to(document.querySelector('.text-work'), 1, {css:{top:'100px', backgroundColor:'#ff0000', fontSize:'12px'}, delay:0.5});
 
-                TweenMax.to(document.querySelector('.' + slider + '.inner'), 0.5, {
+                gsap.to(document.querySelector('.' + slider + '.inner'), {
+                    duration: 0.5,
                     y: -slidesHeight * index + slidesHeight,
                 });
 
                 window.addEventListener('resize', () => { // TODO: when to remove this listener?
                     DOM.DOM(radioButton.parentNode.children[0]).addClass('checked');
                     DOM.DOM(radioButton).removeClass('checked');
-                    TweenMax.to(document.querySelector('.' + slider + '.inner'), 0.5, {
+                    gsap.to(document.querySelector('.' + slider + '.inner'), {
+                        duration: 0.5,
                         y: 0,
                     });
                 });
