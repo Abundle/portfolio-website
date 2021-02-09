@@ -1,8 +1,10 @@
 // Normalize library import
-@import '~normalize-scss';
+@use 'normalize.css/normalize.css';
 
 // Local import
-@import 'colors', 'variables', 'mixins';
+@use 'colors';
+@use 'variables';
+@use 'mixins';
 
 html,
 body {
@@ -16,9 +18,9 @@ body {
 body {
     //position: relative;
     min-height: 100%;
-    font-family: $font-stack;
+    font-family: variables.$font-stack;
     //height: 100vh; /* Avoid the IE 10-11 `min-height` bug. */
-    color: $font-color;
+    color: colors.$font-color;
     font-size: 60%;
     // include font-smoothing?
 }
@@ -30,7 +32,7 @@ body {
     flex-direction: column;
     justify-content: center;
 
-    @include breakpoint-large {
+    @include mixins.breakpoint-large {
         justify-content: flex-start;
     }
 }
@@ -75,7 +77,7 @@ h3 {
     margin: 0;
     padding-bottom: 20px;
     font-size: 1.7em;
-    color: $accent-color;
+    color: colors.$accent-color;
     font-weight: normal;
 }
 
@@ -87,25 +89,25 @@ p {
 
     a {
         text-decoration: none;
-        color: $font-color;
-        border-bottom: 2px solid $accent-color;
+        color: colors.$font-color;
+        border-bottom: 2px solid colors.$accent-color;
         //border-bottom: 2px solid $primary-color;
-        @include transition(border 200ms, color 200ms);
+        @include mixins.transition(border 200ms, color 200ms);
         /*&:hover {
             border-bottom-color: $primary-color;
         }*/
     }
 
-    /*@include breakpoint-mobile {
+    /*@include mixins.breakpoint-mobile {
         font-size: 1.2em;
     }*/
 }
 
 ::selection {
-    background: lighten($accent-color, 50%);
+    background: lighten(colors.$accent-color, 50%);
 }
 ::-moz-selection {
-    background: lighten($accent-color, 50%);
+    background: lighten(colors.$accent-color, 50%);
 }
 
 input[type="radio"] {
@@ -122,8 +124,8 @@ noscript {
     margin-left: 10px;
     padding-left: 20px;
     z-index: 5;
-    color: $secondary-color;
-    border-left: 3px solid $accent-color;
+    color: colors.$secondary-color;
+    border-left: 3px solid colors.$accent-color;
     font-size: 1.7em;
     //background-color: red;
     a {
@@ -140,12 +142,12 @@ noscript {
     height: 100px;
     font-size: 5em;
     opacity: 0;
-    @include animation(fade 1.5s ease);
+    @include mixins.animation(fade 1.5s ease);
     p {
         text-align: center;
     }
 
-    @include keyframes(fade) {
+    @include mixins.keyframes(fade) {
         0% {opacity: 0;}
         20% {opacity: 1;}
         80% {opacity: 1;}
@@ -158,14 +160,14 @@ noscript {
     width: 65%;
     opacity: 1;
     flex-grow: 1;
-    @include transition(opacity 300ms ease);
+    @include mixins.transition(opacity 300ms ease);
 
     .greeting-text {
         position: absolute;
         bottom: 25px;
         left: 6.5vw;
-        color: $secondary-color;
-        border-left: 3px solid $accent-color;
+        color: colors.$secondary-color;
+        border-left: 3px solid colors.$accent-color;
         font-weight: lighter;
         font-size: 1.7em;
         p {
@@ -180,7 +182,7 @@ noscript {
         opacity: 0;
     }
 
-    @include breakpoint-large {
+    @include mixins.breakpoint-large {
         flex-grow: 0;
 
         .greeting-text {
@@ -190,10 +192,10 @@ noscript {
             padding: 0;
         }
     }
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         width: 100%;
     }
-    @include breakpoint-mobile {
+    @include mixins.breakpoint-mobile {
         .greeting-text {
             width: 200px;
             margin: 45px auto 25px auto;
@@ -207,21 +209,21 @@ noscript {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: $secondary-color;
+    background-color: colors.$secondary-color;
     opacity: 1;
     z-index: 6;
-    @include transition(transform 2.5s ease, opacity 500ms ease 2.4s);
+    @include mixins.transition(transform 2.5s ease, opacity 500ms ease 2.4s);
 
     &.slide-open {
-        @include transform(translate3d(65%, 0, 0));
+        @include mixins.transform(translate3d(65%, 0, 0));
         opacity: 0;
     }
 
-    @include breakpoint-medium {
-        @include transition(transform 1.75s ease, opacity 500ms 1.75s);
+    @include mixins.breakpoint-medium {
+        @include mixins.transition(transform 1.75s ease, opacity 500ms 1.75s);
 
         &.slide-open {
-            @include transform(translate3d(0, 100%, 0));
+            @include mixins.transform(translate3d(0, 100%, 0));
             opacity: 0;
         }
     }
@@ -235,42 +237,42 @@ noscript {
     top: 0;
     right: 0;
     z-index: 3;
-    background-color: $secondary-color;
-    @include transform(translate3d(65%, 0, 0));
-    @include transition(transform 1.75s cubic-bezier(0.6, 0, 0.15, 1) 100ms);
+    background-color: colors.$secondary-color;
+    @include mixins.transform(translate3d(65%, 0, 0));
+    @include mixins.transition(transform 1.75s cubic-bezier(0.6, 0, 0.15, 1) 100ms);
     //will-change: transform;
 
     /*&.default {
-        @include transform(translate3d(65%, 0, 0));
-        @include breakpoint-medium {
+        @include mixins.transform(translate3d(65%, 0, 0));
+        @include mixins.breakpoint-medium {
             //transition-duration: 0s;
-            @include transform(translate3d(0, 100%, 0));
+            @include mixins.transform(translate3d(0, 100%, 0));
         }
     }*/
     &.closed { // rename 'close'?
-        @include transform(translate3d($sidebar-width, 0, 0));
+        @include mixins.transform(translate3d(variables.$sidebar-width, 0, 0));
 
-        @include breakpoint-medium {
-            @include transform(translate3d(0, 0, 0));
+        @include mixins.breakpoint-medium {
+            @include mixins.transform(translate3d(0, 0, 0));
         }
     }
     &.half-open { // rename?
         transition-duration: 1s;
-        @include transform(translate3d(18%, 0, 0));
+        @include mixins.transform(translate3d(18%, 0, 0));
 
-        @include breakpoint-large {
-            @include transform(translate3d(260px, 0, 0));
+        @include mixins.breakpoint-large {
+            @include mixins.transform(translate3d(260px, 0, 0));
         }
-        @include breakpoint-medium {
-            @include transform(translate3d(0, 0, 0));
+        @include mixins.breakpoint-medium {
+            @include mixins.transform(translate3d(0, 0, 0));
         }
     }
     &.fullscreen {
         transition-duration: 1s;
-        @include transform(translate3d(0, 0, 0));
+        @include mixins.transform(translate3d(0, 0, 0));
     }
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: none;
     }
 }
@@ -281,16 +283,16 @@ noscript {
     bottom: 0;
     width: 100%;
     height: 100%;
-    background-color: $secondary-color;
+    background-color: colors.$secondary-color;
     z-index: 3;
-    @include transform(translate3d(0, 100%, 0));
-    @include transition(transform 1.5s cubic-bezier(0.6, 0, 0.15, 1)); //1.75s 100ms
+    @include mixins.transform(translate3d(0, 100%, 0));
+    @include mixins.transition(transform 1.5s cubic-bezier(0.6, 0, 0.15, 1)); //1.75s 100ms
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: block;
 
         &.slide-up {
-            @include transform(translate3d(0, 0, 0));
+            @include mixins.transform(translate3d(0, 0, 0));
         }
     }
 }
@@ -309,14 +311,14 @@ noscript {
     z-index: 4;
     overflow: hidden;
     /*opacity: 1;
-    @include transition(opacity 300ms ease);
+    @include mixins.transition(opacity 300ms ease);
 
     &.fade-out {
         opacity: 0;
     }
     */
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: none;
     }
 }
@@ -331,7 +333,7 @@ noscript {
         filter: grayscale(100%);
         width: 18vw; //350px;
         opacity: 1;
-        @include transition(opacity 200ms ease, filter 200ms ease);
+        @include mixins.transition(opacity 200ms ease, filter 200ms ease);
         &:hover {
             filter: none;
         }
@@ -344,7 +346,7 @@ noscript {
             opacity: 0;
         }
 
-        @include breakpoint-large {
+        @include mixins.breakpoint-large {
             width: 250px;
         }
     }
@@ -357,7 +359,7 @@ noscript {
     width: 100%;
     opacity: 0;
     background-color: #181818;
-    @include transition(opacity 200ms ease);
+    @include mixins.transition(opacity 200ms ease);
     &:hover {
         opacity: 0.75;
     }
@@ -367,7 +369,7 @@ noscript {
         top: 50%;
         left: 20px;
         color: white;
-        @include transform(translate(0, -50%));
+        @include mixins.transform(translate(0, -50%));
     }
 }
 
@@ -380,7 +382,7 @@ noscript {
         width: 100%;
         opacity: 0;
         background-color: #181818;
-        @include transition(opacity 200ms ease);
+        @include mixins.transition(opacity 200ms ease);
         &:hover {
             opacity: 0.5;
         }
@@ -390,7 +392,7 @@ noscript {
             top: 50%;
             left: 50%;
             color: white;
-            @include transform(translate(-50%, -50%));
+            @include mixins.transform(translate(-50%, -50%));
         }
     }
 }*/
@@ -404,21 +406,21 @@ noscript {
     right: 0;
     z-index: 3;
     opacity: 1;
-    @include transform(translate3d(65%, 0, 0));
-    @include transition(transform 1.2s cubic-bezier(0.6, 0, 0.15, 1) 100ms);
-    //@include transition(transform 1s cubic-bezier(0.6, 0, 0.15, 1) 100ms, opacity 200ms ease); //1.4s
+    @include mixins.transform(translate3d(65%, 0, 0));
+    @include mixins.transition(transform 1.2s cubic-bezier(0.6, 0, 0.15, 1) 100ms);
+    //@include mixins.transition(transform 1s cubic-bezier(0.6, 0, 0.15, 1) 100ms, opacity 200ms ease); //1.4s
     //will-change: transform;
 
     &.closed {
         transition-duration: 1s;
-        @include transform(translate3d(18%, 0, 0)); //47px
+        @include mixins.transform(translate3d(18%, 0, 0)); //47px
 
-        @include breakpoint-large {
-            @include transform(translate3d(260px, 0, 0));
+        @include mixins.breakpoint-large {
+            @include mixins.transform(translate3d(260px, 0, 0));
         }
 
-        @include breakpoint-medium {
-            @include transform(translate3d(0, 0, 0));
+        @include mixins.breakpoint-medium {
+            @include mixins.transform(translate3d(0, 0, 0));
         }
     }
 
@@ -426,7 +428,7 @@ noscript {
         opacity: 0;
     }*/
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: none;
     }
 }
@@ -437,10 +439,10 @@ noscript {
     width: 75px; //100
     height: 75px;
     opacity: 1;
-    @include transform(translate3d(-90px, 0, 0)); //82px
-    @include transition(transform 1s ease 100ms, background-color 200ms ease-in, border-color 200ms ease-in, opacity 200ms ease);
-    background-color: $secondary-color;
-    border: 3px solid $secondary-color;
+    @include mixins.transform(translate3d(-90px, 0, 0)); //82px
+    @include mixins.transition(transform 1s ease 100ms, background-color 200ms ease-in, border-color 200ms ease-in, opacity 200ms ease);
+    background-color: colors.$secondary-color;
+    border: 3px solid colors.$secondary-color;
     &.fade-out {
         opacity: 0;
     }
@@ -451,14 +453,14 @@ noscript {
         width: 4px;
         height: 46px;
         margin-left: 45px;
-        @include transition(transform 800ms ease 175ms, border-bottom-color 200ms ease);
+        @include mixins.transition(transform 800ms ease 175ms, border-bottom-color 200ms ease);
         border-bottom: 50px solid $secondary-color;
     }
     &:before {
-        @include transform(rotate(225deg));
+        @include mixins.transform(rotate(225deg));
     }
     &:after {
-        @include transform(translate(0, -100px) rotate(-45deg));
+        @include mixins.transform(translate(0, -100px) rotate(-45deg));
     }*/
 
     a {
@@ -467,7 +469,7 @@ noscript {
         width: 100%;
     }
     p {
-        color: $primary-color;
+        color: colors.$primary-color;
         font-size: 1.5em;
         padding-left: 5px;
         padding-top: 50px;
@@ -477,11 +479,11 @@ noscript {
     }
 
     &.flip {
-        @include transform(translate3d(15px, 0, 0));
-        background-color: $primary-color;
-        border-color: $primary-color;
+        @include mixins.transform(translate3d(15px, 0, 0));
+        background-color: colors.$primary-color;
+        border-color: colors.$primary-color;
         p {
-            color: $secondary-color;
+            color: colors.$secondary-color;
         }
         &:hover {
             border-color: #BF1919;
@@ -496,16 +498,16 @@ noscript {
 
     &.flip {
         transition-duration: 1s;
-        @include transform(translate3d(0, 0, 0)); //37px
+        @include mixins.transform(translate3d(0, 0, 0)); //37px
         &:before,
         &:after {
             border-bottom-color: $primary-color;
         }
         &:before {
-            @include transform(rotate(135deg));
+            @include mixins.transform(rotate(135deg));
         }
         &:after {
-            @include transform(translate(0, -100px) rotate(45deg));
+            @include mixins.transform(translate(0, -100px) rotate(45deg));
         }
         &:hover {
             &:before,
@@ -521,7 +523,7 @@ noscript {
     height: 800px;
     width: 100%;
     display: none;
-    background: $secondary-color;
+    background: colors.$secondary-color;
     margin-top: 75px;
 
     .mobile-carousel-container {
@@ -534,7 +536,7 @@ noscript {
             margin: auto;
             padding-top: 25px;
             filter: grayscale(100%);
-            @include transition(opacity 200ms ease, filter 200ms ease);
+            @include mixins.transition(opacity 200ms ease, filter 200ms ease);
             &:hover {
                 filter: none;
             }
@@ -545,7 +547,7 @@ noscript {
         }
     }
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: block;
     }
 }
@@ -556,14 +558,14 @@ noscript {
     width: 100%;
     height: 50px;
     z-index: 5;
-    @include transform(translate3d(0, -50px, 0));
+    @include mixins.transform(translate3d(0, -50px, 0));
 
     &.closed {
         position: absolute;
         margin-top: 50px;
     }
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: block;
     }
 }
@@ -574,30 +576,30 @@ noscript {
     margin: auto;
     //background: url(../img/mobile_canvas_arrow.svg) no-repeat;
     //background-size: 100% 100%;
-    @include transform(translate(0, -10px));
-    @include transition(background-color 200ms ease-in, border-color 200ms ease-in);
-    background-color: $secondary-color;
-    border: 3px solid $secondary-color;
-    /*@include transform(translate(25px, -25px));
+    @include mixins.transform(translate(0, -10px));
+    @include mixins.transition(background-color 200ms ease-in, border-color 200ms ease-in);
+    background-color: colors.$secondary-color;
+    border: 3px solid colors.$secondary-color;
+    /*@include mixins.transform(translate(25px, -25px));
     &:before,
     &:after {
         position: absolute;
         content: '';
         width: 3px; //4
         height: 35px; //34
-        @include transition(border-bottom-color 200ms ease);
+        @include mixins.transition(border-bottom-color 200ms ease);
         border-bottom: 38px solid $secondary-color;
     }
-    &:before {@include transform(rotate(45deg));}
-    &:after {@include transform(translate(0, -50px) rotate(-45deg));}*/
+    &:before {@include mixins.transform(rotate(45deg));}
+    &:after {@include mixins.transform(translate(0, -50px) rotate(-45deg));}*/
     a {
         display: block;
         width: 100%; //100%
         height: 100%;
-        //@include transform(translate(-50px, 10px));
+        //@include mixins.transform(translate(-50px, 10px));
     }
     p {
-        color: $primary-color;
+        color: colors.$primary-color;
         font-size: 1em;
         padding-left: 2px;
         padding-top: 25px;
@@ -607,11 +609,11 @@ noscript {
     }
 
     &.flip {
-        @include transform(translate(0, 10px));
-        background-color: $primary-color;
-        border-color: $primary-color;
+        @include mixins.transform(translate(0, 10px));
+        background-color: colors.$primary-color;
+        border-color: colors.$primary-color;
         p {
-            color: $secondary-color;
+            color: colors.$secondary-color;
         }
         &:hover {
             border-color: #BF1919;
@@ -625,16 +627,16 @@ noscript {
     }
 
     &.flip {
-        @include transform(translate(25px, 5px));
+        @include mixins.transform(translate(25px, 5px));
         &:before,
         &:after {
             border-bottom-color: $primary-color;
         }
         &:before {
-            @include transform(rotate(135deg));
+            @include mixins.transform(rotate(135deg));
         }
         &:after {
-            @include transform(translate(0, -50px) rotate(-135deg));
+            @include mixins.transform(translate(0, -50px) rotate(-135deg));
         }
         &:hover {
             &:before,
@@ -658,16 +660,16 @@ noscript {
     z-index: 4;
     margin: 0 auto;
     opacity: 1;
-    @include transition(opacity 300ms ease);
+    @include mixins.transition(opacity 300ms ease);
 
     /*&.fade-out {
         opacity: 0;
     }*/
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         width: 100%;
         left: 0;
-        background-color: $secondary-color;
+        background-color: colors.$secondary-color;
     }
 }
 
@@ -681,7 +683,7 @@ noscript {
         width: calc(3 * 350px + 3 * 25px);
         top: 50px;
     }
-    @include breakpoint-large {
+    @include mixins.breakpoint-large {
         align-self: auto;
         margin-top: 50px;
         width: calc(2 * 350px + 2 * 25px);
@@ -701,8 +703,8 @@ noscript {
     opacity: 1;
     filter: none;
     //filter: grayscale(100%);
-    @include transform(translate3d(0, 0, 0));
-    @include transition(transform 1.75s cubic-bezier(0.23, 0.94, 0.3, 1), opacity 500ms ease, filter 200ms ease);
+    @include mixins.transform(translate3d(0, 0, 0));
+    @include mixins.transition(transform 1.75s cubic-bezier(0.23, 0.94, 0.3, 1), opacity 500ms ease, filter 200ms ease);
     &:hover {
         filter: grayscale(100%);
         //filter: none;
@@ -718,11 +720,11 @@ noscript {
 
     &.slide-out {
         opacity: 0;
-        @include transform(translate3d(80px, 0, 0));
+        @include mixins.transform(translate3d(80px, 0, 0));
     }
     &.slide-down {
         opacity: 0;
-        @include transform(translate3d(0, 40px, 0));
+        @include mixins.transform(translate3d(0, 40px, 0));
     }
 }
 
@@ -734,9 +736,9 @@ noscript {
     width: 100%;
     height: calc(100% - 48px); // replace with variable
     min-height: calc(100% - 48px);
-    padding-top: $exit-box-height;
+    padding-top: variables.$exit-box-height;
     z-index: 3; //4
-    background-color: $secondary-color;
+    background-color: colors.$secondary-color;
 }
 
 /*.fade-out {
@@ -752,13 +754,13 @@ noscript {
     height: 80%;
     min-height: 200px;
     opacity: 1;
-    @include transition(opacity 300ms ease);
+    @include mixins.transition(opacity 300ms ease);
     img {
         position: absolute;
         max-width: 70%;
         min-width: 300px;
         max-height: 650px;
-        @include transition(transform 1s cubic-bezier(0.6, 0, 0.15, 1));
+        @include mixins.transition(transform 1s cubic-bezier(0.6, 0, 0.15, 1));
 
         /*@media screen and (orientation: landscape) { // change to mixin
             max-height: 90%;
@@ -770,32 +772,32 @@ noscript {
     }
 
     .previous {
-        @include transform(translate3d(-150%, 0, 0) scale(0.85, 0.85));
+        @include mixins.transform(translate3d(-150%, 0, 0) scale(0.85, 0.85));
 
         &.slide-onscreen {
-            @include transform(translate3d(0, 0, 0) scale(1, 1));
+            @include mixins.transform(translate3d(0, 0, 0) scale(1, 1));
         }
     }
 
     .current {
         &.slide-offscreen-left {
-            @include transform(translate3d(-150%, 0, 0) scale(0.85, 0.85));
+            @include mixins.transform(translate3d(-150%, 0, 0) scale(0.85, 0.85));
         }
 
         &.slide-offscreen-right {
-            @include transform(translate3d(150%, 0, 0) scale(0.85, 0.85));
+            @include mixins.transform(translate3d(150%, 0, 0) scale(0.85, 0.85));
         }
     }
 
     .next {
-        @include transform(translate3d(150%, 0, 0) scale(0.85, 0.85));
+        @include mixins.transform(translate3d(150%, 0, 0) scale(0.85, 0.85));
 
         &.slide-onscreen {
-            @include transform(translate3d(0, 0, 0) scale(1, 1));
+            @include mixins.transform(translate3d(0, 0, 0) scale(1, 1));
         }
     }
 
-    @include breakpoint-large {
+    @include mixins.breakpoint-large {
         height: 50vw;
         img {
             width: 80%;
@@ -811,8 +813,8 @@ noscript {
     overflow: hidden;
     bottom: 0;
     z-index: 4;
-    background-color: $primary-color;
-    @include transition(height 500ms ease, min-height 500ms ease);
+    background-color: colors.$primary-color;
+    @include mixins.transition(height 500ms ease, min-height 500ms ease);
 
     &.hidden {
         height: 0;
@@ -824,7 +826,7 @@ noscript {
         height: 0;
         border-left: 30px solid transparent;
         border-right: 30px solid transparent;
-        border-top: 30px solid $secondary-color;
+        border-top: 30px solid colors.$secondary-color;
     }
 
     .gallery-image-text {
@@ -833,20 +835,20 @@ noscript {
         margin: 10px auto 0 auto;
         width: 950px;
         opacity: 1;
-        @include transition(opacity 300ms ease);
+        @include mixins.transition(opacity 300ms ease);
         //word-wrap: break-word;
         h1 {
-            color: $secondary-color;
+            color: colors.$secondary-color;
             margin: 0;
             padding: 0;
             padding-right: 30px;
             text-align: right;
             width: 475px;
             line-height: 0.9;
-            border-right: 2px solid $accent-color;
+            border-right: 2px solid colors.$accent-color;
         }
         p {
-            color: $secondary-color;
+            color: colors.$secondary-color;
             margin: 0;
             padding-left: 30px;
             width: 474px;
@@ -856,7 +858,7 @@ noscript {
             display: none;
             height: 1px;
             width: 60px;
-            border-bottom: 2px solid $accent-color;
+            border-bottom: 2px solid colors.$accent-color;
             padding: 0;
         }
 
@@ -865,7 +867,7 @@ noscript {
         }
     }
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         height: 40%;
 
         .gallery-image-text {
@@ -892,7 +894,7 @@ noscript {
         }
     }
 
-    @include breakpoint-mobile {
+    @include mixins.breakpoint-mobile {
         //min-height: 500px; // change this with more text
         height: 50%; //55%
     }
@@ -912,10 +914,10 @@ noscript {
     width: 50px; // 16:9 ratio
     height: 50px;
     top: 35%;
-    background-color: $tertiary-color;
+    background-color: colors.$tertiary-color;
     cursor: pointer;
     opacity: 1;
-    @include transition(opacity 300ms ease);
+    @include mixins.transition(opacity 300ms ease);
     a {
         display: block;
         height: 100%;
@@ -938,7 +940,7 @@ noscript {
         opacity: 0;
     }
 
-    @include breakpoint-large {
+    @include mixins.breakpoint-large {
         top: auto;
 
         &.left {
@@ -955,16 +957,16 @@ noscript {
 .sub-menu {
     position: fixed;
     display: block;
-    top: -$exit-box-height;
-    left: $sidebar-width;
+    top: variables.$exit-box-height * -1;
+    left: variables.$sidebar-width;
     height: 100%;
     width: 0;
-    padding-top: $exit-box-height;
-    background-color: $primary-color;
+    padding-top: variables.$exit-box-height;
+    background-color: colors.$primary-color;
     overflow: hidden;
     box-shadow: inset  12px 0 12px -4px rgba(0, 0, 0, 0.5),
     inset -12px 0 12px -4px rgba(0, 0, 0, 0.5);
-    @include transition(width 0.5s);
+    @include mixins.transition(width 0.5s);
 
     &-container {
         position: absolute;
@@ -979,14 +981,14 @@ noscript {
         text-align: center;
         display: block;
         font-size: 1.5em;
-        color: $secondary-color;
-        @include transition(background-color 0.5s, margin-left 0.75s ease);
+        color: colors.$secondary-color;
+        @include mixins.transition(background-color 0.5s, margin-left 0.75s ease);
         &:hover {
             cursor: pointer;
-            background-color: $hover-color;
+            background-color: colors.$hover-color;
         }
         &.clicked {
-            background-color: $hover-color;
+            background-color: colors.$hover-color;
         }
 
         &.slide {
@@ -999,58 +1001,58 @@ noscript {
 }
 
 .menu-box1 {
-    @include box(url(../assets/img/work_icon.svg), 50px);
+    @include mixins.box(url(../assets/img/work_icon.svg), 50px);
     z-index: 3;
-    @include transform(translate3d(0, 0, 0) scale(1));
+    @include mixins.transform(translate3d(0, 0, 0) scale(1));
 
     &.stack-box1 {
-        @include transition(transform 750ms cubic-bezier(0.75, 0, 0.4, 1));
-        @include transform(translate3d(-700px, 0, 0) scale(0.9));
+        @include mixins.transition(transform 750ms cubic-bezier(0.75, 0, 0.4, 1));
+        @include mixins.transform(translate3d(-700px, 0, 0) scale(0.9));
     }
     &.intro-box1 {
         //@mixin box-animation ($animation..., $keyframe, $translation-x) {
-        @include box-intro-animation(intro-box1, 2.6s, 0.05s, 0);
+        @include mixins.box-intro-animation(intro-box1, 2.6s, 0.05s, 0);
     }
 
-    @include breakpoint-large {
+    @include mixins.breakpoint-large {
         margin-top: 0;
     }
 }
 .menu-box2 {
-    @include box(url(../assets/img/about_icon.svg), 50px);
+    @include mixins.box(url(../assets/img/about_icon.svg), 50px);
     z-index: 2;
-    @include transform(translate3d(0, 0, 0) scale(1));
+    @include mixins.transform(translate3d(0, 0, 0) scale(1));
 
     &.stack-box2 {
-        @include transition(transform 1s cubic-bezier(0.75, 0, 0.4, 1));
-        @include transform(translate3d(-1200px, 0, 0) scale(0.9));
+        @include mixins.transition(transform 1s cubic-bezier(0.75, 0, 0.4, 1));
+        @include mixins.transform(translate3d(-1200px, 0, 0) scale(0.9));
     }
     &.intro-box2 {
-        @include box-intro-animation(intro-box2, 2.3s, 0.1s, -250px);
+        @include mixins.box-intro-animation(intro-box2, 2.3s, 0.1s, -250px);
     }
 }
 .menu-box3 {
-    @include box(url(../assets/img/contact_icon.svg), 70px);
+    @include mixins.box(url(../assets/img/contact_icon.svg), 70px);
     z-index: 1;
-    @include transform(translate3d(0, 0, 0) scale(1));
+    @include mixins.transform(translate3d(0, 0, 0) scale(1));
 
     &.stack-box3 {
-        @include transition(transform 1.25s cubic-bezier(0.75, 0, 0.4, 1));
-        @include transform(translate3d(-1700px, 0, 0) scale(0.9));
+        @include mixins.transition(transform 1.25s cubic-bezier(0.75, 0, 0.4, 1));
+        @include mixins.transform(translate3d(-1700px, 0, 0) scale(0.9));
     }
     &.intro-box3 {
-        @include box-intro-animation(intro-box3, 1.9s, 0.15s, -500px);
+        @include mixins.box-intro-animation(intro-box3, 1.9s, 0.15s, -500px);
     }
 }
 
 .menu-box-overlay {
     position: absolute;
     height: calc(100% / 3);
-    width: $sidebar-width;
+    width: variables.$sidebar-width;
     opacity: 1;
-    background-color: $accent-color;
+    background-color: colors.$accent-color;
     pointer-events: none;
-    @include transition(transform 0.75s ease 0.1s);
+    @include mixins.transition(transform 0.75s ease 0.1s);
     &::after {
         content: "";
         display: block;
@@ -1060,8 +1062,8 @@ noscript {
         z-index: 1;
         right: -12.5px;
         top: calc(50% - 15px);
-        background-color: $accent-color;
-        @include transform(rotate(-45deg));
+        background-color: colors.$accent-color;
+        @include mixins.transform(rotate(-45deg));
     }
 
     .about & {
@@ -1083,17 +1085,17 @@ noscript {
     &.unstacked {
         flex-direction: row; //space-around
         justify-content: center;
-        height: $box-size;
+        height: variables.$box-size;
         z-index: 2;
 
-        @include breakpoint-large {
+        @include mixins.breakpoint-large {
             flex-direction: column;
             justify-content: flex-start;
             display: inline;
             //align-items: center;
             height: auto;
         }
-        @include breakpoint-medium {
+        @include mixins.breakpoint-medium {
             width: 100%;
         }
     }
@@ -1102,13 +1104,13 @@ noscript {
         flex-direction: column;
         justify-content: flex-start;
         top: 0;
-        margin-top: $exit-box-height;
-        width: $sidebar-width;
+        margin-top: variables.$exit-box-height;
+        width: variables.$sidebar-width;
         height: calc(100% - 48px);
         z-index: 6;
-        background-color: $tertiary-color;
+        background-color: colors.$tertiary-color;
 
-        @include breakpoint-medium {
+        @include mixins.breakpoint-medium {
             display: none;
         }
     }
@@ -1130,17 +1132,17 @@ noscript {
             margin-right: 0;
             margin-bottom: 10px;
 
-            @include breakpoint-large {
+            @include mixins.breakpoint-large {
                 width: 250px;
                 height: 250px;
             }
         }
 
-        @include breakpoint-large {
+        @include mixins.breakpoint-large {
             width: 250px;
         }
 
-        @include breakpoint-medium {
+        @include mixins.breakpoint-medium {
             display: none;
         }
     }
@@ -1158,21 +1160,21 @@ noscript {
     @extend .menu-box1;
 
     &.stacked {
-        background-color: $tertiary-color;
+        background-color: colors.$tertiary-color;
     }
 }
 .pseudo-menu-box2 {
     @extend .menu-box2;
 
     &.stacked {
-        background-color: $tertiary-color;
+        background-color: colors.$tertiary-color;
     }
 }
 .pseudo-menu-box3 {
     @extend .menu-box3;
 
     &.stacked {
-        background-color: $tertiary-color;
+        background-color: colors.$tertiary-color;
     }
 }
 
@@ -1206,13 +1208,13 @@ noscript {
         min-height: 160px; //165px
         min-width: 250px;
 
-        @include breakpoint-large {
+        @include mixins.breakpoint-large {
             height: calc(36vw - 40px); //36vw
         }
-        @include breakpoint-medium {
+        @include mixins.breakpoint-medium {
             height: calc(52vw - 40px);
         }
-        /*@include breakpoint-small {
+        /*@include mixins.breakpoint-small {
             height: calc(52vw - 35px);
         }*/
     }
@@ -1225,10 +1227,10 @@ noscript {
         min-height: 160px;
         min-width: 330px;
 
-        @include breakpoint-large {
+        @include mixins.breakpoint-large {
             height: calc(36vw - 40px);
         }
-        @include breakpoint-medium {
+        @include mixins.breakpoint-medium {
             height: calc(52vw - 40px);
         }
     }
@@ -1239,7 +1241,7 @@ noscript {
         min-width: 275px;
         margin: 0;
         overflow: hidden;
-        background-color: $primary-color;
+        background-color: colors.$primary-color;
         /*&:hover {
             .img-description {
                 opacity: 0.7;
@@ -1260,20 +1262,20 @@ noscript {
         height: 40px;
         display: flex;
         align-items: center;
-        background-color: $primary-color;
-        @include transition(opacity 200ms ease);
+        background-color: colors.$primary-color;
+        @include mixins.transition(opacity 200ms ease);
         p {
             width: 100%;
             margin: auto;
             text-align: center;
-            color: $secondary-color;
+            color: colors.$secondary-color;
         }
     }
 
-    @include breakpoint-large {
+    @include mixins.breakpoint-large {
         height: 36vw;
     }
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         height: 52vw;
     }
 }
@@ -1289,26 +1291,26 @@ noscript {
         border-radius: 50%;
         margin: 15px 0;
         cursor: pointer;
-        background-color: $primary-color;
+        background-color: colors.$primary-color;
 
         &.checked {
-            background-color: $accent-color;
+            background-color: colors.$accent-color;
         }
     }
 }
 
 .canvas-container {
     position: absolute;
-    left: $sidebar-width;
+    left: variables.$sidebar-width;
     right: 0;
-    background-color: $secondary-color;
+    background-color: colors.$secondary-color;
     z-index: 4;
 
     .work & {
         left: 200px;
     }
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         left: 0;
         .work & {left: 0;}
     }
@@ -1321,7 +1323,7 @@ noscript {
     margin: auto;
     padding-bottom: 150px;
     opacity: 0;
-    @include transition(transform 750ms ease-out 100ms, opacity 250ms);
+    @include mixins.transition(transform 750ms ease-out 100ms, opacity 250ms);
     //will-change: transform;
     img {
         //display: block;
@@ -1332,7 +1334,7 @@ noscript {
         width: 75%;
         margin-top: 75px;
 
-        @include breakpoint-medium {
+        @include mixins.breakpoint-medium {
             width: 90%;
         }
     }
@@ -1347,14 +1349,14 @@ noscript {
         margin-top: 50px;
         padding-bottom: 50px;
 
-        @include breakpoint-medium {
+        @include mixins.breakpoint-medium {
             width: 85%;
         }
     }
 
     &.active {
         opacity: 1;
-        @include transform(translate3d(0, -10px, 0));
+        @include mixins.transform(translate3d(0, -10px, 0));
     }
 }
 
@@ -1363,7 +1365,7 @@ noscript {
     margin-top: 10px;
     margin-left: calc(20px + 14px);
     time {
-        color: $primary-color;
+        color: colors.$primary-color;
         font-size: 1.6em;
         padding-bottom: 10px;
     }
@@ -1373,7 +1375,7 @@ noscript {
         font-size: 1.5em;
     }
     a {
-        color: $accent-color;
+        color: colors.$accent-color;
         border: none;
     }
     img {
@@ -1392,10 +1394,10 @@ noscript {
             width: 100%;
         }
 
-        @include breakpoint-medium {
+        @include mixins.breakpoint-medium {
             width: 400px;
         }
-        @include breakpoint-mobile {
+        @include mixins.breakpoint-mobile {
             width: 75vw;
         }
     }
@@ -1416,7 +1418,7 @@ noscript {
         margin-left: calc(20px + 14px);
     }
 
-    @include breakpoint-large {
+    @include mixins.breakpoint-large {
         margin-bottom: 35px;
     }
 }
@@ -1426,7 +1428,7 @@ noscript {
         flex: 0 1 auto;
         margin-top: calc(2 * 37px); //42px
 
-        @include breakpoint-large {
+        @include mixins.breakpoint-large {
             margin-top: 0;
             margin-left: calc(20px + 14px);
         }
@@ -1440,10 +1442,10 @@ noscript {
             margin: 10px 0 80px 0;
         }*/
 
-        @include breakpoint-medium {
+        @include mixins.breakpoint-medium {
             width: 400px;
         }
-        @include breakpoint-mobile {
+        @include mixins.breakpoint-mobile {
             width: 75vw;
         }
     }
@@ -1477,7 +1479,7 @@ noscript {
             margin-bottom: 15px;
         }
 
-        @include breakpoint-small {
+        @include mixins.breakpoint-small {
             &:first-child {
                 padding-right: 0;
             }
@@ -1493,7 +1495,7 @@ noscript {
         align-items: flex-start;
         margin-bottom: 150px;
 
-        @include breakpoint-large {
+        @include mixins.breakpoint-large {
             flex-direction: column;
         }
     }
@@ -1504,7 +1506,7 @@ noscript {
         align-items: flex-start;
         height: 100%;
 
-        @include breakpoint-small {
+        @include mixins.breakpoint-small {
             flex-direction: column;
         }
     }
@@ -1514,15 +1516,15 @@ noscript {
     position: fixed;
     top: -50px;
     left: 0;
-    width: $sidebar-width;
-    height: $exit-box-height;
+    width: variables.$sidebar-width;
+    height: variables.$exit-box-height;
     z-index: 4;
-    background: url(../assets/img/exit_arrow.svg) no-repeat center $primary-color;
+    background: url(../assets/img/exit_arrow.svg) no-repeat center colors.$primary-color;
     background-size: 18px;
-    @include transition(background-color 300ms, top 200ms);
+    @include mixins.transition(background-color 300ms, top 200ms);
     cursor: pointer;
     &:hover {
-        background-color: $hover-color;
+        background-color: colors.$hover-color;
     }
     a {
         display: block;
@@ -1539,14 +1541,14 @@ noscript {
     z-index: 4;
     top: -50px;
     left: 0;
-    width: $sidebar-width;
-    height: $exit-box-height;
-    background: url(../assets/img/back_arrow.svg) no-repeat center $secondary-color;
+    width: variables.$sidebar-width;
+    height: variables.$exit-box-height;
+    background: url(../assets/img/back_arrow.svg) no-repeat center colors.$secondary-color;
     background-size: 18px;
-    @include transition(background-color 300ms, top 200ms);
+    @include mixins.transition(background-color 300ms, top 200ms);
     cursor: pointer;
     &:hover {
-        background-color: lighten($primary-color, 75%);
+        background-color: lighten(colors.$primary-color, 75%);
     }
     a {
         display: block;
@@ -1568,14 +1570,14 @@ noscript {
     z-index: 0;
     background-color: rgba(0,0,0,0.5);
     opacity: 0;
-    @include transition(opacity 0.5s);
+    @include mixins.transition(opacity 0.5s);
 
     &.active {
         z-index: 5;
         opacity: 1;
     }
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: inline;
     }
 }
@@ -1587,7 +1589,7 @@ noscript {
     height: 40px;
     z-index: 6;
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: block;
     }
 
@@ -1601,12 +1603,12 @@ noscript {
     input:checked ~ label > .menu-container {
         .bar1 {
             transform: rotate(-45deg) translate(-5px, 5px);
-            background-color: $secondary-color;
+            background-color: colors.$secondary-color;
             //background-color: $secondary-color !important; // otherwise JavaScript interferes
         }
         .bar2 {
             transform: rotate(45deg) translate(-5px, -5px);
-            background-color: $secondary-color;
+            background-color: colors.$secondary-color;
         }
     }
 }
@@ -1621,7 +1623,7 @@ noscript {
     z-index: 6;
     cursor: pointer;
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: block;
     }
 }
@@ -1630,13 +1632,13 @@ noscript {
 .bar2 {
     width: 25px;
     height: 2px;
-    background-color: $primary-color;
+    background-color: colors.$primary-color;
     margin-top: 12px;
     margin-left: 12px;
     transition: 0.4s;
 
     .index & {
-        background-color: $accent-color;
+        background-color: colors.$accent-color;
     }
 }
 
@@ -1647,12 +1649,12 @@ noscript {
     height: 100%;
     width: 100%;
     padding-top: 60px;
-    background-color: $tertiary-color;
+    background-color: colors.$tertiary-color;
     overflow-x: hidden;
     opacity: 0;
     pointer-events: none;
-    @include transition(opacity 0.5s);
-    //@include transition(width 0.5s);
+    @include mixins.transition(opacity 0.5s);
+    //@include mixins.transition(width 0.5s);
 
     li {
         display: block;
@@ -1662,16 +1664,16 @@ noscript {
         color: dimgrey;
         line-height: 50px;
         text-align: center;
-        @include transition(margin-left 0.9s ease);
+        @include mixins.transition(margin-left 0.9s ease);
         a {
             display: block;
             height: 100%;
             width: 100%;
-            color: $secondary-color;
-            @include transition(background-color 0.5s);
+            color: colors.$secondary-color;
+            @include mixins.transition(background-color 0.5s);
             &:hover {
                 cursor: pointer;
-                background-color: $accent-color; //dimgrey
+                background-color: colors.$accent-color; //dimgrey
             }
         }
     }
@@ -1680,18 +1682,18 @@ noscript {
 #carousel-button {
     padding: 5px;
     background-color: transparent;
-    border: 2px solid $accent-color;
+    border: 2px solid colors.$accent-color;
     cursor: pointer;
     //font-family: $font-stack;
     //text-decoration: none;
-    @include transition(background-color 200ms ease, color 200ms ease);
+    @include mixins.transition(background-color 200ms ease, color 200ms ease);
     &:hover {
-        color: $secondary-color;
-        background-color: $accent-color;
+        color: colors.$secondary-color;
+        background-color: colors.$accent-color;
     }
 
     span {
-        font-family: $font-stack;
+        font-family: variables.$font-stack;
         font-size: 1.1em;
     }
 }
@@ -1699,7 +1701,7 @@ noscript {
 #map {
     width: 100%;
     height: 400px;
-    background: url(/src/assets/img/contact_placeholder.png) no-repeat center $secondary-color;
+    background: url(/src/assets/img/contact_placeholder.png) no-repeat center colors.$secondary-color;
 }
 
 /*#time {
@@ -1732,7 +1734,7 @@ footer {
         font-size: 1.4em;
         text-align: center;
 
-        @include breakpoint-mobile {
+        @include mixins.breakpoint-mobile {
             font-size: 1.1em;
         }
     }
@@ -1744,17 +1746,17 @@ footer {
     padding: 0;
     p {
         position: absolute;
-        color: $secondary-color;
+        color: colors.$secondary-color;
         width: 65%;
         bottom: 0;
         padding: 5px 0 25px 0;
 
-        @include breakpoint-large {
+        @include mixins.breakpoint-large {
             position: static;
         }
     }
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: none;
     }
 }
@@ -1764,7 +1766,7 @@ footer {
     display: none;
     padding: 0;
 
-    @include breakpoint-medium {
+    @include mixins.breakpoint-medium {
         display: block;
     }
 }

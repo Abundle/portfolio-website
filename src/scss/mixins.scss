@@ -1,4 +1,6 @@
-/*------------------ MIXINS ----------------------*/
+// Local import
+@use 'colors';
+@use 'variables';
 
 @mixin breakpoint-large {
     @media only screen and (max-width: 1500px) {@content;}
@@ -21,14 +23,14 @@
        /*-moz-animation: $parameters;*/
         -ms-animation: $parameters;
          -o-animation: $parameters;
-            animation: $parameters;  
+            animation: $parameters;
 }
 
 @mixin keyframes($animation-name) {
     @-webkit-keyframes #{$animation-name} {@content;}
     /*@-moz-keyframes #{$animation-name} {@content;}  */
     @-ms-keyframes #{$animation-name} {@content;}
-    @-o-keyframes #{$animation-name} {@content;}  
+    @-o-keyframes #{$animation-name} {@content;}
     @keyframes #{$animation-name} {@content;}
 }
 
@@ -45,7 +47,7 @@
         /*-moz-transform: $parameters;*/
          -ms-transform: $parameters;
           -o-transform: $parameters;
-             transform: $parameters; 
+             transform: $parameters;
 }
 
 /*@mixin display-flex() {
@@ -61,8 +63,8 @@
 
 @mixin box($image-url, $image-size) {
     text-align: center;
-    height: $box-size;
-    width: $box-size;
+    height: variables.$box-size;
+    width: variables.$box-size;
     display: block;
     cursor: pointer;
     box-sizing: border-box;
@@ -72,30 +74,30 @@
         display: block;
         height: 100%;
         width: 100%;
-    } 
-	
+    }
+
     &.unstacked {
-        width: $box-size;
+        width: variables.$box-size;
 		margin-right: 25px;
-        background: $image-url no-repeat center $accent-color;
+        background: $image-url no-repeat center colors.$accent-color;
         background-size: $image-size;
-		border: 3px solid $accent-color;
+		border: 3px solid colors.$accent-color;
         &:hover {
-            border-color: $secondary-color;
+            border-color: colors.$secondary-color;
         }
         p {
             margin: 0;
-            color: $secondary-color;
+            color: colors.$secondary-color;
             font-size: 1.8em; //1.5em
             font-weight: lighter;
             padding-left: 28px;
             padding-top: 82%;
         }
-        
+
         &.unstacked-outro {
             @include transform(translate3d(-500px, 0, 0));
         }
-        
+
         @include breakpoint-large {
             margin: 0 auto 25px auto;
             /*margin-right: 0;
@@ -112,27 +114,27 @@
     }
     &.stacked {
         height: calc(100% / 3);
-        width: $sidebar-width;
+        width: variables.$sidebar-width;
         background: $image-url no-repeat center;
         background-size: 27px;
         //transform-origin: 0 50%;
         &:not(.no-hover):hover {
-            background-color: $hover-color; //$primary-color
+            background-color: colors.$hover-color; //$primary-color
         }
         p {
             position: absolute;
             bottom: 15px;
-            width: $sidebar-width;
+            width: variables.$sidebar-width;
             margin: auto;
             text-align: center;
-            color: $secondary-color;
+            color: colors.$secondary-color;
             font-size: 1.2em;
             font-weight: lighter;
         }
-		
+
         &.clicked {
-            background-color: $accent-color;
-            &:hover {background-color: $accent-color;}
+            background-color: colors.$accent-color;
+            &:hover {background-color: colors.$accent-color;}
             &::after {
                 content: "";
                 display: block;
@@ -142,7 +144,7 @@
                 z-index: 1;
                 right: -12.5px;
                 top: calc(50% - 15px);
-                background-color: $accent-color;
+                background-color: colors.$accent-color;
                 @include transform(rotate(-45deg));
             }
         }
@@ -155,7 +157,7 @@
 @mixin box-intro-animation($animation-name, $animation-duration, $animation-delay, $translation-x) {
     @include animation($animation-name $animation-duration $animation-delay);
     @include transition(all 200ms forwards);
-    
+
     @include keyframes($animation-name) {
         0%   {
             @include transform(scale(0.6) translate3d(0, 0, 0));

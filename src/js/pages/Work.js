@@ -45,6 +45,7 @@ import virtueLogoVideo from '../../assets/video/virtue_logo_video.mp4';
 import radiomentaVideo from '../../assets/video/radiomenta_video.mp4';
 
 // Docs
+import virtueBrochurePdf from '../../assets/docs/virtue_crowdfunding_brochure.pdf';
 import aidenPoster from '../../assets/docs/aiden_poster.pdf';
 
 // Without this line, CSSPlugin and AttrPlugin may get dropped by your bundler...
@@ -371,6 +372,12 @@ const Work = {
 
                                         <a href='https://teamvirtue.nl/webapp/' target='_blank'>
                                             <img src=${ websiteIcon } alt='link icon'> Web app for LINQ
+                                        </a>
+                                        
+                                        <br />
+                                        
+                                        <a href=${ virtueBrochurePdf } target='_blank'>
+                                            <img src=${ linkIcon } alt='link icon'> LINQ crowdfunding brochure
                                         </a>
                                     </p>
                                 </div>

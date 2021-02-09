@@ -3,7 +3,6 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import autoprefixer from 'autoprefixer';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 
@@ -14,8 +13,9 @@ export default (env, options) => {
 
     return {
         entry: './src/js/index.js',
+        target: 'web', // TODO: Check browserlist node support issue https://github.com/webpack/webpack/issues/11660 and https://github.com/webpack/webpack-dev-server/issues/2758
         output: {
-            filename: devMode ? 'main.js' : 'main.[chunkhash].js',
+            filename: devMode ? '[name].js' : '[name].[chunkhash].js',
             chunkFilename: devMode ? '[name].js' : '[name].[chunkhash].js',
             publicPath: '/',
             path: path.resolve(__dirname, 'build'),
@@ -30,16 +30,32 @@ export default (env, options) => {
                     }
                 },
                 {
-                    test: /\.s(a|c)ss$/,
+                    test: /\.scss$/,
+                    exclude: /node_modules/,
                     use: [
                         devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                        { loader: 'css-loader' },
-                        { loader: 'postcss-loader',
+                        {
+                            loader: 'css-loader',
+                            options: { importLoaders: 1 },
+                        },
+                        {
+                            loader: 'postcss-loader',
                             options: {
-                                plugins: () => [autoprefixer()],
+                                postcssOptions: {
+                                    plugins: ['autoprefixer'],
+                                }
                             },
                         },
-                        { loader: 'sass-loader' }
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                // Using Dart Sass
+                                implementation: require('sass'),
+                                sassOptions: {
+                                    includePaths: ['./node_modules']
+                                },
+                            },
+                        }
                     ],
                 },
                 { // TODO: Check fonts inclusion
@@ -71,14 +87,20 @@ export default (env, options) => {
                 },
             ]
         },
+        performance: {
+            hints: 'warning',
+        },
+        stats: 'minimal',
         devServer: {
             open: true,
             overlay: true,
             historyApiFallback: true
             // TODO: check rewrites https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback
         },
-        devtool: devMode ? 'eval-source-map' : false, // or use source-map?
+        // To work with TerserPlugin: https://github.com/webpack-contrib/terser-webpack-plugin#note-about-source-maps
+        devtool: devMode ? 'eval-source-map' : 'source-map',
         optimization: {
+            minimize: true,
             minimizer: [
                 new TerserPlugin({
                     terserOptions: {
@@ -86,7 +108,7 @@ export default (env, options) => {
                             comments: false,
                         },
                     },
-                    extractComments: false,
+                    extractComments: !devMode,
                 }),
             ],
             splitChunks: {
@@ -95,7 +117,8 @@ export default (env, options) => {
                 cacheGroups: {
                     vendors: {
                         test: /[\\/]node_modules[\\/]/,
-                        name: devMode,
+                        name: 'vendors',
+                        chunks: 'all',
                     },
                 }
             },
@@ -104,24 +127,39 @@ export default (env, options) => {
         },
         plugins: [
             new CleanWebpackPlugin(),
-            new HtmlWebpackPlugin({ // HtmlWebpackPlugin must be before FaviconsWebpackPlugin
+            // HtmlWebpackPlugin must go before FaviconsWebpackPlugin
+            // From https://github.com/jantimon/favicons-webpack-plugin#html-injection
+            new HtmlWebpackPlugin({
+                title: 'Portfolio', // TODO: use this in index.html
                 template: './src/index.html',
                 minify: {
                     removeComments: true,
                     collapseWhitespace: false,
                 },
-                'meta': {
-                    'theme-color': '#0E0E0E',
+                meta: { // HTML meta tags // TODO: use this in index.html
+                    author: process.env.npm_package_author_name,
+                    viewport: 'width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0',
+                    theme_color: '#0E0E0E',
+                }
+            }),
+            new FaviconsWebpackPlugin({
+                logo: './logo.png',
+                favicons: { // this plugin injects meta-tags from package.json unless they are explicitly set to null
+                    appName: null,
+                    appDescription: null,
+                    developerName: null,
+                    developerURL: null,
+                    background: null,
+                    theme_color: null,
                 }
             }),
             new MiniCssExtractPlugin({
-                filename: devMode ? '[name].css' : '[name].[hash].css',
-                chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+                filename: devMode ? '[name].css' : '[name].[chunkhash].css',
+                chunkFilename: devMode ? '[id].css' : '[id].[chunkhash].css',
             }),
-            new CopyWebpackPlugin([
-                { from: '.htaccess' },
-            ]),
-            new FaviconsWebpackPlugin(),
+            new CopyWebpackPlugin({
+                patterns: [{ from: '.htaccess' }]
+            }),
         ]
     };
 };

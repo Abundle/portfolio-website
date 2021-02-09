@@ -16,6 +16,7 @@ import Utils from './utils/Utils.js';
 import { intervalGallery, intervalCarousel } from './utils/PageAnimations';
 import * as DOM from './utils/DOMFunctions';
 
+// Style import
 import '../scss/main.scss';
 
 // TODO: also make the website work without JavaScript?
